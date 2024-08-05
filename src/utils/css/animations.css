@@ -1,0 +1,88 @@
+.trigger-fade-out {
+    animation: 0.5s ease-out 0s fadeOut;
+}
+
+.fade-in {
+    animation: 0.5s ease-in 0s fadeIn;
+}
+
+.translate-in-y {
+    animation: 1s ease-in-out 0s translateIn;
+}
+
+.glow {
+    animation: 1s infinite 1.2s glow;
+}
+
+#fade-out-container {
+    opacity: 1;
+}
+
+.scale-in {
+    animation: 1s ease-out 0s scaleIn;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes translateIn {
+    0% {
+        transform: translateY(-90%);
+        opacity: 0;
+    }
+
+    75% {
+        transform: translateY(15%);
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px 5px #D2E3C8;
+        /* Start with a subtle glow */
+    }
+
+    50% {
+        box-shadow: 0 0 20px 10px #D2E3C8;
+        /* Increase the glow intensity */
+    }
+
+    100% {
+        box-shadow: 0 0 10px 5px #D2E3C8;
+        /* Return to the subtle glow */
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        scale: 0;
+        opacity: 0;
+    }
+
+    100% {
+        scale: 1;
+        opacity: 1;
+    }
+}
