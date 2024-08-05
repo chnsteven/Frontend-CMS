@@ -2,13 +2,37 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import Projects from "../pages/Projects";
 import Education from "../pages/Education";
+import ProjectPage from "../pages/ProjectPage";
 
-export const headerLinks = [
+export const menus = [
   { title: "Home", path: "/", component: Home },
   { title: "About", path: "/about", component: About },
-  { title: "Projects", path: "/projects", component: Projects },
+  {
+    title: "Projects",
+    path: "/projects",
+    component: Projects,
+    subSections: [
+      {
+        title: "react-portfolio",
+        path: "/projects/react-portfolio",
+        component: ProjectPage,
+      },
+      { title: "verloren", path: "/projects/verloren", component: ProjectPage },
+      { title: "cosmania", path: "/projects/cosmania", component: ProjectPage },
+      {
+        title: "insight-ubc",
+        path: "/projects/insight-ubc",
+        component: ProjectPage,
+      },
+      {
+        title: "java-application",
+        path: "/projects/java-application",
+        component: ProjectPage,
+      },
+      { title: "jankbot", path: "/projects/jankbot", component: ProjectPage },
+    ],
+  },
   { title: "Education", path: "/education", component: Education },
-  // { title: "Experience", path: "/experience", component: Experience },
 ];
 
 export const projectIds = [
@@ -17,7 +41,7 @@ export const projectIds = [
   "cosmania",
   "insightUBC",
   "javaApplication",
-  "jankbot"
+  "jankbot",
 ];
 
 export const aboutContent = [

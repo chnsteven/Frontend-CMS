@@ -1,10 +1,11 @@
 import "./utils/css/projectCard.css";
 import "./utils/css/education.css";
 import "./utils/css/animations.css";
+import "./utils/css/nav-menu.css";
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { projectIds, headerLinks } from "./utils/constants";
+import { projectIds, menus } from "./utils/constants";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ProjectPage from "./pages/ProjectPage";
@@ -25,18 +26,17 @@ function App() {
         setEducation(educationResponse.data);
 
         const projectRequests = projectIds.map((projectId) =>
-          axios
-            .get(`${PORT}projects/${projectId}`)
+          axios.get(`${PORT}projects/${projectId}`)
         );
         const projectPromises = await Promise.all(projectRequests);
         const projectsData = projectPromises.map((project) => project.data);
         setProjects(projectsData);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
         setLoading(false); // Set loading to false in case of an error
       }
-    }
+    };
     fetchData();
   }, []);
 
@@ -44,7 +44,11 @@ function App() {
     return (
       <div className="loading-screen">
         {/* <p>loading...</p> */}
-        <p>Please bear with me while my website loads. I'm on a free server, so it may take a bit longer (at most 1 minute). I appreciate your patience!</p>
+        <p>
+          Please bear with me while my website loads. I'm on a free server, so
+          it may take a bit longer (at most 1 minute). I appreciate your
+          patience!
+        </p>
       </div>
     );
   }
@@ -62,7 +66,7 @@ function App() {
                 />
               )
           )}
-          {headerLinks.map((link) => {
+          {menus.map((link) => {
             if (link.title === "Projects") {
               return (
                 <Route
@@ -80,7 +84,13 @@ function App() {
                 />
               );
             } else {
-              return <Route path={link.path} key={link.title} element={<link.component />} />;
+              return (
+                <Route
+                  path={link.path}
+                  key={link.title}
+                  element={<link.component />}
+                />
+              );
             }
           })}
         </Routes>
