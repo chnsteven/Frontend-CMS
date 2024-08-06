@@ -7,6 +7,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { projectIds, menus } from "./utils/constants";
 import { useState, useEffect } from "react";
+import AppRouter from "./components/AppRouter";
 import axios from "axios";
 import ProjectPage from "./pages/ProjectPage";
 
@@ -54,7 +55,8 @@ function App() {
   }
   return (
     <div className="body">
-      <Router>
+      <AppRouter />
+      {/* <Router>
         <Routes>
           {projects.map(
             (project) =>
@@ -94,7 +96,7 @@ function App() {
             }
           })}
         </Routes>
-      </Router>
+      </Router> */}
     </div>
   );
 }
