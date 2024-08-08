@@ -12,7 +12,7 @@ import axios from "axios";
 import ProjectPage from "./pages/ProjectPage";
 
 const PORT =
-  "https://steven-chen-portfolio-server.onrender.com/" || "localhost:5001";
+  "localhost:5001" || "https://steven-chen-portfolio-server.onrender.com/";
 
 function App() {
   const [projects, setProjects] = useState([]);

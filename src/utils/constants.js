@@ -36,11 +36,11 @@ export const menus = [
 ];
 
 export const projectIds = [
-  "reactPortfolio",
+  "react-portfolio",
   "verloren",
   "cosmania",
-  "insightUBC",
-  "javaApplication",
+  "insight-ubc",
+  "java-application",
   "jankbot",
 ];
 
