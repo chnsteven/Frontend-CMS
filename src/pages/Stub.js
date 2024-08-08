@@ -3,13 +3,16 @@ import NavMenu from "../components/NavMenu";
 import MarkdownRenderer from "../components/MarkdownRenderer";
 import VisualNovelDemo from "../components/VisualNovelDemo";
 import VisualNovelDemo2 from "../components/VisualNovelDemo2";
-
+import { projectIds } from "../utils/constants";
 function Stub({ title }) {
   return (
     <div>
       {title}
       <NavMenu />
-      <MarkdownRenderer />
+      {projectIds.map((path) => (
+        <MarkdownRenderer filePath={`./projects/${path}.md`} />
+      ))}
+
       {/* <VisualNovelDemo slides={slides} /> */}
       {/* <VisualNovelDemo2 slides={slides2} />; */}
     </div>

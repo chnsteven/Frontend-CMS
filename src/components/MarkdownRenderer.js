@@ -1,20 +1,16 @@
-// Import the React Markdown component
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
-// Sample markdown text
-const markdown = `
-# Hello, Markdown!
-This is a sample Markdown text with **bold** and _italic_ formatting.
+const MarkdownRenderer = ({ filePath }) => {
+  const [markdown, setMarkdown] = useState("");
 
-## List
-- Item 1
-- Item 2
-- Item 3
-`;
+  useEffect(() => {
+    fetch(filePath)
+      .then((response) => response.text())
+      .then((text) => setMarkdown(text))
+      .catch((error) => console.error("Error fetching markdown:", error));
+  }, [filePath]);
 
-// Create a React component to render the Markdown
-const MarkdownRenderer = () => {
   return (
     <div>
       <ReactMarkdown>{markdown}</ReactMarkdown>
