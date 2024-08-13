@@ -20,6 +20,7 @@ function NavMenu() {
             <Link
               to={encodeURI(menu.path)}
               onClick={() => toggleSubMenu(menu.title)}
+              className={location.pathname === menu.path ? "active" : ""}
             >
               {menu.title}{" "}
               {menu.subSections &&
@@ -32,10 +33,17 @@ function NavMenu() {
             {menu.subSections &&
               location.pathname.startsWith(menu.path) &&
               activeMenu === menu.title && (
-                <ul className="sub-menu">
+                <ul className="nav-sub-menu">
                   {menu.subSections.map((subMenu) => (
                     <li key={`nav-sub-menu ${subMenu.title}`}>
-                      <Link to={encodeURI(subMenu.path)}>{subMenu.title}</Link>
+                      <Link
+                        to={encodeURI(subMenu.path)}
+                        className={
+                          location.pathname === menu.path ? "active" : ""
+                        }
+                      >
+                        {subMenu.title}
+                      </Link>
                     </li>
                   ))}
                 </ul>
