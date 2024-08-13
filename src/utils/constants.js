@@ -1,47 +1,56 @@
-import Home from "../pages/Home";
-import About from "../pages/About";
-import Projects from "../pages/Projects";
-import Education from "../pages/Education";
-import ProjectPage from "../pages/ProjectPage";
-
 export const menus = [
-  { title: "Home", path: "/", component: Home },
-  { title: "About", path: "/about", component: About },
+  { title: "Home", path: "/", component: () => import("../pages/Home") },
+  { title: "About", path: "/about", component: () => import("../pages/About") },
   {
     title: "Projects",
     path: "/projects",
-    component: Projects,
+    component: () => import("../pages/Projects"),
     subSections: [
       {
-        title: "react-portfolio",
-        path: "/projects/react-portfolio",
-        component: ProjectPage,
+        title: "cosmania",
+        path: "/projects/cosmania",
+        component: () => import("../pages/ProjectPage"),
       },
-      { title: "verloren", path: "/projects/verloren", component: ProjectPage },
-      { title: "cosmania", path: "/projects/cosmania", component: ProjectPage },
       {
         title: "insight-ubc",
         path: "/projects/insight-ubc",
-        component: ProjectPage,
+        component: () => import("../pages/ProjectPage"),
+      },
+      {
+        title: "jankbot",
+        path: "/projects/jankbot",
+        component: () => import("../pages/ProjectPage"),
       },
       {
         title: "java-application",
         path: "/projects/java-application",
-        component: ProjectPage,
+        component: () => import("../pages/ProjectPage"),
       },
-      { title: "jankbot", path: "/projects/jankbot", component: ProjectPage },
+      {
+        title: "react-portfolio",
+        path: "/projects/react-portfolio",
+        component: () => import("../pages/ProjectPage"),
+      },
+      {
+        title: "verloren",
+        path: "/projects/verloren",
+        component: () => import("../pages/ProjectPage"),
+      },
     ],
   },
-  { title: "Education", path: "/education", component: Education },
+  {
+    title: "Education",
+    path: "/education",
+    component: () => import("../pages/Education"),
+  },
 ];
 
 export const projectIds = [
+  "insight-ubc",
+  "jankbot",
+  "java-application",
   "react-portfolio",
   "verloren",
-  "cosmania",
-  "insight-ubc",
-  "java-application",
-  "jankbot",
 ];
 
 export const aboutContent = [

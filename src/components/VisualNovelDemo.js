@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const VisualNovelDemo = ({ slides }) => {
+const Demo = ({ slides }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [userProfile, setUserProfile] = useState(null);
   const [showProfileCreation, setShowProfileCreation] = useState(false);
@@ -151,4 +151,4 @@ const VisualNovelDemo = ({ slides }) => {
   );
 };
 
-export default VisualNovelDemo;
+export default Demo;

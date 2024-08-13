@@ -8,11 +8,11 @@ const AppRouter = () => {
   return (
     <Router>
       <Routes>
-        {menus.map(({ path, component: Component, subSections }) => (
+        {menus.map(({ path, subSections }) => (
           <React.Fragment key={router + path}>
             <Route path={path} element={<Stub title={router + path} />} />
             {subSections &&
-              subSections.map(({ path, component: Component }) => (
+              subSections.map(({ path }) => (
                 <Route
                   key={router + path}
                   path={path}
