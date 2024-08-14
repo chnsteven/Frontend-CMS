@@ -1,27 +1,35 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { menus } from "../utils/constants";
-import Stub from "../pages/Stub";
+import MarkdownRenderer from "./MarkdownRenderer";
+import NavMenu from "./NavMenu";
 
-const router = "router";
 const AppRouter = () => {
   return (
     <Router>
-      <Routes>
-        {menus.map(({ path, subSections }) => (
-          <React.Fragment key={router + path}>
-            <Route path={path} element={<Stub title={router + path} />} />
-            {subSections &&
-              subSections.map(({ path }) => (
-                <Route
-                  key={router + path}
-                  path={path}
-                  element={<Stub title={router + path} />}
-                />
-              ))}
-          </React.Fragment>
-        ))}
-      </Routes>
+      <Suspense fallback={<div></div>}>
+        <NavMenu />
+        <Routes>
+          {menus.map(({ component, path, subSections }) => {
+            const Component = React.lazy(component);
+            return (
+              <React.Fragment key={path}>
+                <Route path={path} element={<Component />} />
+                {subSections &&
+                  subSections.map(({ path }) => {
+                    return (
+                      <Route
+                        key={path}
+                        path={path}
+                        element={<MarkdownRenderer filePath={`${path}.md`} />}
+                      />
+                    );
+                  })}
+              </React.Fragment>
+            );
+          })}
+        </Routes>
+      </Suspense>
     </Router>
   );
 };

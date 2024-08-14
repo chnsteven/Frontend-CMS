@@ -1,20 +1,23 @@
-# Cosmania
+# InsightUBC
 
-![Cover Image](../cover_imgs/cover-cosmania.png)
+**Start Date:** September 2022  
+**End Date:** December 2023
 
-**Start Date:** February 2023  
-**End Date:** May 2023
+**Excerpt:** Web development project for CPSC 310 at University of British Columbia
 
-[Watch Video](https://youtu.be/ZcUD4tmIc0k)  
-_Video Excerpt:_ This video does not have audio
+![Cover Image](../cover_imgs/cover-insightUBC.png)
 
-### Overview
+[Watch the Video](https://youtu.be/nV4fzq2wbE4)  
+_This video was made by my partner._
 
-Self-development project.
+## Overview
 
-### Features
+Completed a 10-minute adventure game with a team of 6 using ECS in C++.
 
-- Self-taught **Unity** and **C#**, then developed a horror game that provides 5 minutes of non-repetitive gameplay.
-- Integrated **inkle** into **Unity** to create a complex story system that allows players to make choices from multiple options.
-- Resolved coupling and cohesion issues by implementing **delegates and events** for interactions among various game objects.
-- Designed 2-4 cutscenes using **Cinemachine timeline**, incorporating character and camera movements.
+## Features
+
+- Developed a query language using EBNF for a snapshot of the UBC Pair database.
+- Wrote **user stories** and built a **REST-API server** that communicated with a self-implemented backend.
+- Implemented the backend using the **Facade pattern** with ts-node.
+- Practiced **version control**, **code review**, **scrum meetings**, and **Test-Driven Development (TDD)** in **TypeScript (TS)**.
+- Developed 50+ unit and integration tests using **mocha** and **chai** packages for asynchronous black-box and glass-box testing.

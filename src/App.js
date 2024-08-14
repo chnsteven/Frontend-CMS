@@ -15,44 +15,44 @@ const PORT =
   "localhost:5001" || "https://steven-chen-portfolio-server.onrender.com/";
 
 function App() {
-  const [projects, setProjects] = useState([]);
-  const [education, setEducation] = useState({});
-  const [loading, setLoading] = useState(true);
+  // const [projects, setProjects] = useState([]);
+  // const [education, setEducation] = useState({});
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // await new Promise(resolve => setTimeout(resolve, 2000));
-        const educationResponse = await axios.get(`${PORT}education`);
-        setEducation(educationResponse.data);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       // await new Promise(resolve => setTimeout(resolve, 2000));
+  //       const educationResponse = await axios.get(`${PORT}education`);
+  //       setEducation(educationResponse.data);
 
-        const projectRequests = projectIds.map((projectId) =>
-          axios.get(`${PORT}projects/${projectId}`)
-        );
-        const projectPromises = await Promise.all(projectRequests);
-        const projectsData = projectPromises.map((project) => project.data);
-        setProjects(projectsData);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false); // Set loading to false in case of an error
-      }
-    };
-    fetchData();
-  }, []);
+  //       const projectRequests = projectIds.map((projectId) =>
+  //         axios.get(`${PORT}projects/${projectId}`)
+  //       );
+  //       const projectPromises = await Promise.all(projectRequests);
+  //       const projectsData = projectPromises.map((project) => project.data);
+  //       setProjects(projectsData);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //       setLoading(false); // Set loading to false in case of an error
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
-  if (loading) {
-    return (
-      <div className="loading-screen">
-        {/* <p>loading...</p> */}
-        <p>
-          Please bear with me while my website loads. I'm on a free server, so
-          it may take a bit longer (at most 1 minute). I appreciate your
-          patience!
-        </p>
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="loading-screen">
+  //       {/* <p>loading...</p> */}
+  //       <p>
+  //         Please bear with me while my website loads. I'm on a free server, so
+  //         it may take a bit longer (at most 1 minute). I appreciate your
+  //         patience!
+  //       </p>
+  //     </div>
+  //   );
+  // }
   return (
     <div className="body">
       <AppRouter />
