@@ -2,6 +2,7 @@ import "./utils/css/projectCard.css";
 import "./utils/css/education.css";
 import "./utils/css/animations.css";
 import "./utils/css/nav-menu.css";
+import "./utils/css/projects.css";
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";

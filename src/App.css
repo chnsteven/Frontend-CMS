@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #D2E3C8;
+  background-color: #d2e3c8;
   font-family: monospace;
   font-size: 14px;
   font-weight: lighter;
@@ -15,7 +15,6 @@ button {
   border: none;
   transition: background-color 0.2s ease-in-out;
 }
-
 
 .container {
   display: grid;
@@ -106,7 +105,7 @@ Link {
 
 header {
   display: flex;
-  background-color: #5C8374;
+  background-color: #5c8374;
   align-items: center;
   flex-direction: row;
   padding: 10px;
@@ -163,7 +162,7 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #5C8374;
+  background-color: #5c8374;
   color: white;
   padding: 10px;
   text-align: center;
@@ -182,7 +181,7 @@ footer {
   font-size: 2em;
   justify-items: center;
   display: grid;
-  text-shadow: #9EC8B9 2px 2px;
+  text-shadow: #9ec8b9 2px 2px;
   text-align: center;
   text-transform: capitalize;
   margin-top: 10px;
@@ -191,7 +190,7 @@ footer {
 .sub-title {
   font-size: 1.5em;
   font-style: italic;
-  text-shadow: #9EC8B9 2px 2px;
+  text-shadow: #9ec8b9 2px 2px;
   text-align: center;
   text-transform: capitalize;
   text-decoration: overline solid red;
@@ -215,7 +214,7 @@ strong {
 }
 
 .no-decoration {
-  color: #5C8374;
+  color: #5c8374;
   text-decoration: none;
 }
 
@@ -231,7 +230,7 @@ strong {
 
 .return-to-projects-button {
   display: block;
-  background-color: #86A789;
+  background-color: #86a789;
   border-radius: 15px;
   border: none;
   color: white;
@@ -241,12 +240,11 @@ strong {
 }
 
 .return-to-projects-button:hover {
-  background-color: #4F6F52;
+  background-color: #4f6f52;
 }
 
-
 .homepage-background {
-  background-image: url('./assets/background/homepage-bg-small.jpg');
+  background-image: url("./assets/background/homepage-bg-small.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -260,7 +258,7 @@ strong {
   z-index: 0;
 
   @media screen and (min-width: 600px) {
-    background-image: url('./assets/background/homepage-bg-medium.jpg');
+    background-image: url("./assets/background/homepage-bg-medium.jpg");
   }
 
   /* Adjust background image for larger screens */
@@ -288,9 +286,9 @@ strong {
   margin-top: 20vh;
   padding-left: 1em;
   background-color: rgba(255, 255, 255, 0.3);
-  border-left: 5px solid #4F6F52;
+  border-left: 5px solid #4f6f52;
   font-size: 1.5em;
-  color: #4F6F52;
+  color: #4f6f52;
 }
 
 .homepage-container {
@@ -310,7 +308,7 @@ strong {
 }
 
 .homepage-btn:hover {
-  background-color: #4F6F52;
+  background-color: #4f6f52;
 }
 
 .portrait {
@@ -321,7 +319,7 @@ strong {
 }
 
 .text-shadow {
-  text-shadow: #D2E3C8 3px 3px;
+  text-shadow: #d2e3c8 3px 3px;
 }
 
 /* Add this to your existing CSS or create a new CSS file */
@@ -359,4 +357,26 @@ strong {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Global styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
 }

@@ -8,39 +8,39 @@ export const menus = [
     subSections: [
       {
         title: "cosmania",
-        path: "/projects/cosmania",
+        path: "/projects/cosmania/cosmania",
         component: () => import("../pages/ProjectPage"),
       },
       {
         title: "insight-ubc",
-        path: "/projects/insight-ubc",
+        path: "/projects/insight-ubc.md",
         component: () => import("../pages/ProjectPage"),
       },
       {
         title: "jankbot",
-        path: "/projects/jankbot",
+        path: "/projects/jankbot.md",
         component: () => import("../pages/ProjectPage"),
       },
       {
         title: "java-application",
-        path: "/projects/java-application",
+        path: "/projects/java-application.md",
         component: () => import("../pages/ProjectPage"),
       },
       {
         title: "react-portfolio",
-        path: "/projects/react-portfolio",
+        path: "/projects/react-portfolio.md",
         component: () => import("../pages/ProjectPage"),
       },
       {
         title: "verloren",
-        path: "/projects/verloren",
+        path: "/projects/verloren.md",
         component: () => import("../pages/ProjectPage"),
       },
     ],
   },
   {
     title: "Education",
-    path: "/education",
+    path: "/education/education.md",
     component: () => import("../pages/Education"),
   },
 ];

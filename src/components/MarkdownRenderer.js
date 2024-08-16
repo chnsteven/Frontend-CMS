@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
+const ExternalLink = ({ href, children }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer">
+    {children}
+  </a>
+);
 
 const MarkdownRenderer = ({ filePath }) => {
   const [markdown, setMarkdown] = useState("");
@@ -29,7 +36,14 @@ const MarkdownRenderer = ({ filePath }) => {
 
   return (
     <div>
-      <ReactMarkdown>{markdown}</ReactMarkdown>
+      <Markdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          a: ExternalLink,
+        }}
+      >
+        {markdown}
+      </Markdown>
     </div>
   );
 };
