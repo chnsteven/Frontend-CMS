@@ -13,27 +13,27 @@ export const menus = [
       },
       {
         title: "insight-ubc",
-        path: "/projects/insight-ubc.md",
+        path: "/projects/insight-ubc",
         component: () => import("../pages/ProjectPage"),
       },
       {
         title: "jankbot",
-        path: "/projects/jankbot.md",
+        path: "/projects/jankbot",
         component: () => import("../pages/ProjectPage"),
       },
       {
         title: "java-application",
-        path: "/projects/java-application.md",
+        path: "/projects/java-application",
         component: () => import("../pages/ProjectPage"),
       },
       {
         title: "react-portfolio",
-        path: "/projects/react-portfolio.md",
+        path: "/projects/react-portfolio",
         component: () => import("../pages/ProjectPage"),
       },
       {
         title: "verloren",
-        path: "/projects/verloren.md",
+        path: "/projects/verloren",
         component: () => import("../pages/ProjectPage"),
       },
     ],
