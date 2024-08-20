@@ -1,49 +1,95 @@
 import React, { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import "./Cosmania.css";
 
-const ExternalLink = ({ href, children }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer">
-    {children}
-  </a>
-);
+const filePaths = {
+  main: "/projects/cosmania/main.md",
+  tabs: [
+    {
+      path: "/projects/cosmania/tab1.md",
+    },
+    {
+      path: "/projects/cosmania/tab2.md",
+    },
+    {
+      path: "/projects/cosmania/tab3.md",
+    },
+  ],
+};
 
-const Cosmania = ({ filePath }) => {
-  const [markdown, setMarkdown] = useState("");
+const Cosmania = () => {
+  const [main, setMain] = useState("");
+  const [sections, setSections] = useState([]);
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handleTabClick = (index) => {
+    setActiveTab(index);
+  };
 
   useEffect(() => {
     let isMounted = true;
 
-    const fetchMarkdown = async () => {
+    const fetchMarkdown = async (filePath) => {
+      console.log("Fetching:", filePath);
       try {
         const response = await fetch(filePath);
         if (isMounted) {
-          const text = await response.text();
-          setMarkdown(text);
+          return await response.text();
         }
       } catch (error) {
         console.error("Error fetching markdown:", error);
+        return "";
       }
     };
 
-    const fetchTimeout = setTimeout(fetchMarkdown, 0); // Debounce fetch
+    const fetchAllMarkdown = async () => {
+      const mainContent = await fetchMarkdown(filePaths.main);
+      const sectionsContent = await Promise.all(
+        filePaths.tabs.map((tab) => fetchMarkdown(tab.path))
+      );
+
+      if (isMounted) {
+        setMain(mainContent);
+        setSections(sectionsContent);
+      }
+    };
+
+    fetchAllMarkdown();
 
     return () => {
-      clearTimeout(fetchTimeout); // Clean up timeout
       isMounted = false;
     };
-  }, [filePath]);
+  }, []);
 
   return (
     <div>
-      <Markdown
-        remarkPlugins={[remarkGfm]}
-        components={{
-          a: ExternalLink,
-        }}
-      >
-        {markdown}
-      </Markdown>
+      <div className="container">
+        <Markdown remarkPlugins={[remarkGfm]}>{main}</Markdown>
+      </div>
+      <div className="container">
+        <div className="tab-button-container">
+          <button className="tab-button" onClick={() => handleTabClick(0)}>
+            Core Game Mechanics
+          </button>
+          <button className="tab-button" onClick={() => handleTabClick(1)}>
+            User Interface (UI) Elements
+          </button>
+          <button className="tab-button" onClick={() => handleTabClick(2)}>
+            State Management
+          </button>
+        </div>
+        <div className="tab-content-container">
+          {sections.map(
+            (section, index) =>
+              activeTab === index && (
+                <section key={`activeTab ${index}`}>
+                  <Markdown remarkPlugins={[remarkGfm]}>{section}</Markdown>
+                </section>
+              )
+          )}
+        </div>
+      </div>
     </div>
   );
 };

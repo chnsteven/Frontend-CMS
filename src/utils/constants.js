@@ -9,7 +9,7 @@ export const menus = [
       {
         title: "cosmania",
         path: "/projects/cosmania/cosmania",
-        component: () => import("../pages/ProjectPage"),
+        component: () => import("../pages/Cosmania"),
       },
       {
         title: "insight-ubc",
@@ -34,6 +34,11 @@ export const menus = [
       {
         title: "verloren",
         path: "/projects/verloren",
+        component: () => import("../pages/ProjectPage"),
+      },
+      {
+        title: "test",
+        path: "/projects/test",
         component: () => import("../pages/ProjectPage"),
       },
     ],

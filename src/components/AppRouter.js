@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { menus } from "../utils/constants";
 import MarkdownRenderer from "./MarkdownRenderer";
 import NavMenu from "./NavMenu";
+import Cosmania from "../pages/Cosmania";
 
 const AppRouter = () => {
   return (
@@ -18,11 +19,7 @@ const AppRouter = () => {
                 {subSections &&
                   subSections.map(({ path }) => {
                     return (
-                      <Route
-                        key={path}
-                        path={path}
-                        element={<MarkdownRenderer filePath={`${path}.md`} />}
-                      />
+                      <Route key={path} path={path} element={<Cosmania />} />
                     );
                   })}
               </React.Fragment>

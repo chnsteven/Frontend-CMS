@@ -1,0 +1,24 @@
+.tab-button {
+  background-color: wheat;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px 20px;
+  clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
+}
+
+.tab-button:hover {
+  background-color: peru;
+}
+
+.tab-content-container {
+  background-color: wheat;
+  padding: 0 20px;
+  border: thin solid;
+}
+
+.container {
+  justify-content: space-between; /* Equal space between buttons */
+  align-items: center; /* Align buttons vertically if needed */
+  justify-items: start;
+  margin: 20px 0;
+}
