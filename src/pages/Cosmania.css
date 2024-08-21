@@ -16,9 +16,23 @@
   border: thin solid;
 }
 
-.container {
+.main-container {
+  z-index: auto;
+  padding: 4% 5% 0 5%;
+}
+
+.tab-container {
   justify-content: space-between; /* Equal space between buttons */
   align-items: center; /* Align buttons vertically if needed */
   justify-items: start;
-  margin: 20px 0;
+  z-index: auto;
+  padding: 0 5% 5% 5%;
+}
+
+img {
+  max-width: 480px;
+}
+
+div {
+  background-color: #9fb1bc;
 }

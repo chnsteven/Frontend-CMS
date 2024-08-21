@@ -1,15 +1,15 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { menus } from "../utils/constants";
-import MarkdownRenderer from "./MarkdownRenderer";
-import NavMenu from "./NavMenu";
+// import MarkdownRenderer from "./MarkdownRenderer";
+import NavBar from "./NavBar";
 import Cosmania from "../pages/Cosmania";
 
 const AppRouter = () => {
   return (
     <Router>
       <Suspense fallback={<div></div>}>
-        <NavMenu />
+        <NavBar />
         <Routes>
           {menus.map(({ component, path, subSections }) => {
             const Component = React.lazy(component);

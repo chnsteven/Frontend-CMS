@@ -3,7 +3,7 @@ export const menus = [
   { title: "About", path: "/about", component: () => import("../pages/About") },
   {
     title: "Projects",
-    path: "/projects",
+    path: "",
     component: () => import("../pages/Projects"),
     subSections: [
       {

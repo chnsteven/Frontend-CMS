@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import "./Cosmania.css";
+import "./cosmania.css";
 
 const filePaths = {
   main: "/projects/cosmania/main.md",
@@ -64,10 +64,10 @@ const Cosmania = () => {
 
   return (
     <div>
-      <div className="container">
+      <div className="main-container">
         <Markdown remarkPlugins={[remarkGfm]}>{main}</Markdown>
       </div>
-      <div className="container">
+      <div className="tab-container">
         <div className="tab-button-container">
           <button className="tab-button" onClick={() => handleTabClick(0)}>
             Core Game Mechanics
