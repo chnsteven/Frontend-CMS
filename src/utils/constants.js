@@ -1,52 +1,57 @@
+import Home from "../pages/Home";
+import About from "../pages/About";
+import Cosmania from "../pages/Cosmania";
+import Education from "../pages/Education";
+
 export const menus = [
-  { title: "Home", path: "/", component: () => import("../pages/Home") },
-  { title: "About", path: "/about", component: () => import("../pages/About") },
+  { title: "Home", path: "/", component: Home },
+  { title: "About", path: "/about", component: About },
   {
     title: "Projects",
     path: "",
-    component: () => import("../pages/Projects"),
+    component: null,
     subSections: [
       {
         title: "cosmania",
         path: "/projects/cosmania/cosmania",
-        component: () => import("../pages/Cosmania"),
+        component: Cosmania,
       },
       {
         title: "insight-ubc",
         path: "/projects/insight-ubc",
-        component: () => import("../pages/ProjectPage"),
+        component: Cosmania,
       },
       {
         title: "jankbot",
         path: "/projects/jankbot",
-        component: () => import("../pages/ProjectPage"),
+        component: Cosmania,
       },
       {
         title: "java-application",
         path: "/projects/java-application",
-        component: () => import("../pages/ProjectPage"),
+        component: Cosmania,
       },
       {
         title: "react-portfolio",
         path: "/projects/react-portfolio",
-        component: () => import("../pages/ProjectPage"),
+        component: Cosmania,
       },
       {
         title: "verloren",
         path: "/projects/verloren",
-        component: () => import("../pages/ProjectPage"),
+        component: Cosmania,
       },
       {
         title: "test",
         path: "/projects/test",
-        component: () => import("../pages/ProjectPage"),
+        component: Cosmania,
       },
     ],
   },
   {
     title: "Education",
-    path: "/education/education.md",
-    component: () => import("../pages/Education"),
+    path: "/education/education",
+    component: Education,
   },
 ];
 
@@ -56,15 +61,4 @@ export const projectIds = [
   "java-application",
   "react-portfolio",
   "verloren",
-];
-
-export const aboutContent = [
-  "Proficient with programming languages such as **C**/**C++**, **Java**, **JS**/**TS**,**Python**, and **R**.",
-  "Experience with frameworks such as **Node.js**, **Next.js**, **React.js** and **Three.js**.",
-  "Experience with Test-driven developments, **OOP**, **ECS**.",
-  "Experience with version control with **git**.",
-  "Participated in a simulated **Agile** work environment.",
-  "Understand **design principles**, **design patterns**, **data structures** and **algorithms**.",
-  "Understand **Intelligent** system, **computer graphics**, and **computer animations**.",
-  "Familiar with developing React application using **React-Router**, **Bootstrap**, **API calls**.",
 ];

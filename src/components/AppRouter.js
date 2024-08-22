@@ -12,10 +12,9 @@ const AppRouter = () => {
         <NavBar />
         <Routes>
           {menus.map(({ component, path, subSections }) => {
-            const Component = React.lazy(component);
             return (
               <React.Fragment key={path}>
-                <Route path={path} element={<Component />} />
+                <Route path={path} element={component} />
                 {subSections &&
                   subSections.map(({ path }) => {
                     return (

@@ -31,7 +31,7 @@ const Cosmania = () => {
     let isMounted = true;
 
     const fetchMarkdown = async (filePath) => {
-      console.log("Fetching:", filePath);
+      // console.log("Fetching:", filePath);
       try {
         const response = await fetch(filePath);
         if (isMounted) {
@@ -70,13 +70,13 @@ const Cosmania = () => {
       <div className="tab-container">
         <div className="tab-button-container">
           <button className="tab-button" onClick={() => handleTabClick(0)}>
-            Core Game Mechanics
+            1. Core Game Mechanics
           </button>
           <button className="tab-button" onClick={() => handleTabClick(1)}>
-            User Interface (UI) Elements
+            2. User Interface (UI) Elements
           </button>
           <button className="tab-button" onClick={() => handleTabClick(2)}>
-            State Management
+            3. State Management
           </button>
         </div>
         <div className="tab-content-container">
