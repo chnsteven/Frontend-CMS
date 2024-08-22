@@ -3,6 +3,7 @@
 // import "./utils/css/animations.css";
 // import "./utils/css/projects.css";
 import "./App.css";
+import "./utils/functions.js";
 import React from "react";
 import AppRouter from "./components/AppRouter";
 

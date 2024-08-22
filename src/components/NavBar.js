@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { menus } from "../utils/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretLeft } from "@fortawesome/free-solid-svg-icons";
-import "./nav-bar.css";
 
 function NavBar() {
   const location = useLocation();

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import "./cosmania.css";
+import { fetchMarkdownContent } from "../utils/functions";
 
 const filePaths = {
   main: "/projects/cosmania/main.md",
@@ -30,24 +30,12 @@ const Cosmania = () => {
   useEffect(() => {
     let isMounted = true;
 
-    const fetchMarkdown = async (filePath) => {
-      // console.log("Fetching:", filePath);
-      try {
-        const response = await fetch(filePath);
-        if (isMounted) {
-          return await response.text();
-        }
-      } catch (error) {
-        console.error("Error fetching markdown:", error);
-        return "";
-      }
-    };
-
     const fetchAllMarkdown = async () => {
-      const mainContent = await fetchMarkdown(filePaths.main);
-      const sectionsContent = await Promise.all(
-        filePaths.tabs.map((tab) => fetchMarkdown(tab.path))
+      const { mainContent, sectionsContent } = await fetchMarkdownContent(
+        filePaths
       );
+      console.log(mainContent);
+      console.log(sectionsContent);
 
       if (isMounted) {
         setMain(mainContent);
@@ -61,7 +49,6 @@ const Cosmania = () => {
       isMounted = false;
     };
   }, []);
-
   return (
     <div>
       <div className="main-container">

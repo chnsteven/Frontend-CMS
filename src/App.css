@@ -1,3 +1,113 @@
-html body {
-  overflow: visible;
+/* Use this color palette for theme */
+/* light to dark
+#2e5266 charcoal
+#6e8898 state gray
+#9fb1bc cadet gray
+#d3d0cb timber wolf
+#e2c044 old gold
+*/
+/* https://coolors.co/2e5266-6e8898-9fb1bc-d3d0cb-e2c044 */
+
+/* General style */
+
+div {
+  background-color: #9fb1bc;
+}
+
+/* Cosmania */
+
+.tab-button {
+  background-color: wheat;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 10px 10px 0 0;
+  border: thin solid;
+}
+
+.tab-button:hover {
+  background-color: peru;
+}
+
+.tab-content-container {
+  background-color: wheat;
+  padding: 0 5%;
+  border: thin solid;
+}
+
+.main-container {
+  z-index: auto;
+  padding: 4% 5% 0 5%;
+  @media only screen and (max-width: 600px) {
+    padding: 15% 5% 0 5%;
+  }
+}
+
+.tab-container {
+  justify-content: space-between; /* Equal space between buttons */
+  align-items: center; /* Align buttons vertically if needed */
+  justify-items: start;
+  z-index: auto;
+  padding: 0 5% 5% 5%;
+  @media only screen and (max-width: 600px) {
+    padding: 5% 5% 40% 5%;
+  }
+}
+
+img {
+  max-width: 480px;
+  @media only screen and (max-width: 600px) {
+    max-width: 180px;
+  }
+}
+
+/* nav-bar */
+.nav-bar-container {
+  background-color: #2e5266;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-bar-container a {
+  text-decoration: none;
+  font-size: 1.5em;
+  font-family: cursive;
+  color: white;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.nav-bar-container a:hover {
+  font-weight: bold;
+  color: #e2c044;
+  text-shadow: 1px 1px 1px yellow;
+}
+
+.nav-bar-container li {
+  list-style: none;
+  width: 150px;
+  text-align: center;
+}
+
+.nav-bar-container .active {
+  color: #d3d0cb;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  padding-left: 10px;
+}
+
+.nav-sub-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  position: absolute;
+  top: 100%;
+  background-color: #6e8898;
 }

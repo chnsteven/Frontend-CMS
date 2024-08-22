@@ -1,9 +1,7 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { menus } from "../utils/constants";
-// import MarkdownRenderer from "./MarkdownRenderer";
 import NavBar from "./NavBar";
-import Cosmania from "../pages/Cosmania";
 
 const AppRouter = () => {
   return (
@@ -14,11 +12,12 @@ const AppRouter = () => {
           {menus.map(({ component, path, subSections }) => {
             return (
               <React.Fragment key={path}>
-                <Route path={path} element={component} />
+                <Route path={`${path}/`} element={component} />
                 {subSections &&
-                  subSections.map(({ path }) => {
+                  subSections.map(({ component, path }) => {
+                    console.log(component);
                     return (
-                      <Route key={path} path={path} element={<Cosmania />} />
+                      <Route key={path} path={`${path}/`} element={component} />
                     );
                   })}
               </React.Fragment>

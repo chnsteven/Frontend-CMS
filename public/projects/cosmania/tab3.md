@@ -2,9 +2,9 @@
 
 - **Finite State Machine (FSM)**: Show how the FSM manages NPC and player states. You could visualize state transitions for NPCs or the player, and how different states trigger specific behaviors or animations.
 
-| ![GIF UI State Change](./ui/ui%20state%20change.gif) |
-| :--------------------------------------------------: |
-|                    _UI State FSM_                    |
+| ![GIF UI State Change](/projects/cosmania/ui/ui%20state%20change.gif) |
+| :-------------------------------------------------------------------: |
+|                            _UI State FSM_                             |
 
 #### State management
 

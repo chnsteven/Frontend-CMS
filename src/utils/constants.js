@@ -1,6 +1,7 @@
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Cosmania from "../pages/Cosmania";
+import InsightUBC from "../pages/InsightUBC";
 import Education from "../pages/Education";
 
 export const menus = [
@@ -13,13 +14,13 @@ export const menus = [
     subSections: [
       {
         title: "cosmania",
-        path: "/projects/cosmania/cosmania",
-        component: Cosmania,
+        path: "/projects/cosmania",
+        component: <Cosmania />,
       },
       {
         title: "insight-ubc",
         path: "/projects/insight-ubc",
-        component: Cosmania,
+        component: <InsightUBC />,
       },
       {
         title: "jankbot",
