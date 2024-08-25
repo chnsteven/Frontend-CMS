@@ -15,10 +15,7 @@ const AppRouter = () => {
                 <Route path={`${path}/`} element={component} />
                 {subSections &&
                   subSections.map(({ component, path }) => {
-                    console.log(component);
-                    return (
-                      <Route key={path} path={`${path}/`} element={component} />
-                    );
+                    return <Route key={path} path={path} element={component} />;
                   })}
               </React.Fragment>
             );

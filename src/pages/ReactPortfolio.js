@@ -4,11 +4,11 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const filePaths = {
-  main: "insight-ubc.md",
+  main: "react-portfolio.md",
   tabs: [],
 };
 
-function InsightUBC() {
+function Jankbot() {
   const [main, setMain] = useState("");
   const [sections, setSections] = useState([]);
 
@@ -19,6 +19,7 @@ function InsightUBC() {
       const { mainContent, sectionsContent } = await fetchMarkdownContent(
         filePaths
       );
+
       if (isMounted) {
         setMain(mainContent);
         setSections(sectionsContent);
@@ -32,11 +33,11 @@ function InsightUBC() {
     };
   }, []);
   return (
-    <div>
+    <div className="tab-container">
       <Markdown remarkPlugins={[remarkGfm]}>{main}</Markdown>
       <p>TODO: query</p>
     </div>
   );
 }
 
-export default InsightUBC;
+export default Jankbot;

@@ -4,16 +4,16 @@ import remarkGfm from "remark-gfm";
 import { fetchMarkdownContent } from "../utils/functions";
 
 const filePaths = {
-  main: "/projects/cosmania/main.md",
+  main: "cosmania/main.md",
   tabs: [
     {
-      path: "/projects/cosmania/tab1.md",
+      path: "cosmania/tab1.md",
     },
     {
-      path: "/projects/cosmania/tab2.md",
+      path: "cosmania/tab2.md",
     },
     {
-      path: "/projects/cosmania/tab3.md",
+      path: "cosmania/tab3.md",
     },
   ],
 };
@@ -34,8 +34,6 @@ const Cosmania = () => {
       const { mainContent, sectionsContent } = await fetchMarkdownContent(
         filePaths
       );
-      console.log(mainContent);
-      console.log(sectionsContent);
 
       if (isMounted) {
         setMain(mainContent);

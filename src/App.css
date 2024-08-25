@@ -10,8 +10,9 @@
 
 /* General style */
 
-div {
+body {
   background-color: #9fb1bc;
+  font-size: 20px;
 }
 
 /* Cosmania */
@@ -37,7 +38,7 @@ div {
 
 .main-container {
   z-index: auto;
-  padding: 4% 5% 0 5%;
+  padding: 10% 5% 0 5%;
   @media only screen and (max-width: 600px) {
     padding: 15% 5% 0 5%;
   }
@@ -48,9 +49,9 @@ div {
   align-items: center; /* Align buttons vertically if needed */
   justify-items: start;
   z-index: auto;
-  padding: 0 5% 5% 5%;
+  padding: 5% 5% 5% 5%;
   @media only screen and (max-width: 600px) {
-    padding: 5% 5% 40% 5%;
+    padding: 20% 5% 40% 5%;
   }
 }
 
@@ -59,6 +60,20 @@ img {
   @media only screen and (max-width: 600px) {
     max-width: 180px;
   }
+}
+
+/* jank-bot */
+.jank-bot-theme {
+  font-family: "VT323", monospace;
+  font-style: normal;
+}
+.jank-bot-theme h1 {
+  font-weight: bolder;
+}
+
+.jank-bot-theme em {
+  color: red;
+  font-weight: light;
 }
 
 /* nav-bar */
@@ -88,7 +103,7 @@ img {
 
 .nav-bar-container li {
   list-style: none;
-  width: 150px;
+  width: 200px;
   text-align: center;
 }
 

@@ -5,7 +5,7 @@
 
 **Excerpt:** Web development project for CPSC 310 at University of British Columbia
 
-![Cover Image](../cover_imgs/cover-insightUBC.png)
+![Cover Image](/cover_imgs/cover-insightUBC.png)
 
 [Watch the Video](https://youtu.be/nV4fzq2wbE4)  
 _This video was made by my partner._
