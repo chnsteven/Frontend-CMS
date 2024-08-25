@@ -13,7 +13,7 @@ export const menus = [
   { title: "About", path: "/about", component: <About /> },
   {
     title: "Projects",
-    path: "",
+    path: "/projects",
     component: null,
     subSections: [
       {

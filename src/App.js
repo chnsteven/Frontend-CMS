@@ -1,7 +1,3 @@
-// import "./utils/css/projectCard.css";
-// import "./utils/css/education.css";
-// import "./utils/css/animations.css";
-// import "./utils/css/projects.css";
 import "./App.css";
 import "./utils/functions.js";
 import React from "react";
