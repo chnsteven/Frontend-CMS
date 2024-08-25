@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, redirect } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { menus } from "../utils/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 
 function NavBar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState(null);
 
-  // Remove trailing slash from URL on component mount
   useEffect(() => {
     if (location.pathname !== "/" && location.pathname.endsWith("/")) {
-      redirect(location.pathname.slice(0, -1));
+      const newPath = location.pathname.slice(0, -1);
+      console.log("Redirecting to " + newPath);
+      navigate(newPath, { replace: true }); // Use navigate for redirection
     }
-  }, [location]);
+  }, [location, navigate]);
 
   useEffect(() => {
     localStorage.setItem("activeMenu", activeMenu);

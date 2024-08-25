@@ -2,6 +2,8 @@ import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { menus } from "../utils/constants";
 import NavBar from "./NavBar";
+import Footer from "./Footer";
+import ScrollToTopButton from "./ScrollToTopButton";
 
 const AppRouter = () => {
   return (
@@ -22,6 +24,8 @@ const AppRouter = () => {
           })}
         </Routes>
       </Suspense>
+      <ScrollToTopButton />
+      <Footer />
     </Router>
   );
 };

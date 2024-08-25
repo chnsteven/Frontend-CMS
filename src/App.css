@@ -12,7 +12,55 @@
 
 body {
   background-color: #9fb1bc;
-  font-size: 20px;
+  font-size: 18px;
+}
+
+/* Footer */
+
+.scroll-to-top-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-to-top-button button {
+  background-color: #2e5266;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.scroll-to-top-button button:hover {
+  background-color: #e2c044;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+.scroll-to-top-button svg {
+  color: white;
+  height: 25px;
+  width: 25px;
+}
+
+footer {
+  padding-top: 20px;
+}
+
+address {
+  background-color: #6e8898;
+  justify-content: center;
+
+  display: flex;
+  flex-direction: row;
+}
+
+address > p {
+  padding: 10px;
+}
+p > svg {
+  padding: 0 5px;
 }
 
 /* Cosmania */
@@ -49,7 +97,7 @@ body {
   align-items: center; /* Align buttons vertically if needed */
   justify-items: start;
   z-index: auto;
-  padding: 5% 5% 5% 5%;
+  padding: 15vh 5vh 5vh 5vh;
   @media only screen and (max-width: 600px) {
     padding: 20% 5% 40% 5%;
   }
@@ -96,7 +144,6 @@ img {
 }
 
 .nav-bar-container a:hover {
-  font-weight: bold;
   color: #e2c044;
   text-shadow: 1px 1px 1px yellow;
 }
@@ -121,8 +168,19 @@ img {
 .nav-sub-menu {
   display: flex;
   flex-direction: column;
-  padding: 2px;
+  padding: 0;
   position: absolute;
   top: 100%;
   background-color: #6e8898;
+}
+
+.nav-sub-menu > li {
+  text-align: left;
+  padding: 2px 20px;
+}
+
+/* icon */
+.icon {
+  width: 30px;
+  height: 30px;
 }

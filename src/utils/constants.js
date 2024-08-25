@@ -54,11 +54,3 @@ export const menus = [
     component: <Education />,
   },
 ];
-
-export const projectIds = [
-  "insight-ubc",
-  "jankbot",
-  "java-application",
-  "react-portfolio",
-  "verloren",
-];

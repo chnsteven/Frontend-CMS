@@ -1,7 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpLong } from "@fortawesome/free-solid-svg-icons";
 function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
+
   const handleScroll = () => {
     const scrollY = window.scrollY;
     const scrollThreshold = 200;
@@ -21,13 +24,15 @@ function ScrollToTopButton() {
   }, []);
 
   return (
-    <button
-      onClick={scrollToTop}
-      className={`scroll-to-top-button ${isVisible ? "visible" : "hidden"}`}
-      title="Scroll to top"
-    >
-      ↑
-    </button>
+    <div className="scroll-to-top-button">
+      <button
+        onClick={scrollToTop}
+        className={`${isVisible ? "visible" : "hidden"}`}
+        title="Scroll to top"
+      >
+        <FontAwesomeIcon icon={faArrowUpLong} />
+      </button>
+    </div>
   );
 }
 
