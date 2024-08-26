@@ -7,12 +7,20 @@
 #e2c044 old gold
 */
 /* https://coolors.co/2e5266-6e8898-9fb1bc-d3d0cb-e2c044 */
-
 /* General style */
 
 body {
-  background-color: #9fb1bc;
+  background-color: #9fb1bc; /* Cadet Gray */
   font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+}
+
+svg {
+  min-width: 30px;
+  min-height: 30px;
 }
 
 /* Footer */
@@ -24,24 +32,20 @@ body {
 }
 
 .scroll-to-top-button button {
-  background-color: #2e5266;
+  background-color: #2e5266; /* Charcoal */
   border-radius: 50%;
   height: 50px;
   width: 50px;
+  border: none;
 }
 
 .scroll-to-top-button button:hover {
-  background-color: #e2c044;
+  background-color: #e2c044; /* Old Gold */
   cursor: pointer;
 }
 
 .hidden {
   display: none;
-}
-.scroll-to-top-button svg {
-  color: white;
-  height: 25px;
-  width: 25px;
 }
 
 footer {
@@ -49,84 +53,112 @@ footer {
 }
 
 address {
-  background-color: #6e8898;
-  justify-content: center;
-
+  background-color: #6e8898; /* State Gray */
   display: flex;
   flex-direction: row;
+  gap: 5vw;
+  justify-content: center;
 }
 
 address > p {
   padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-p > svg {
-  padding: 0 5px;
+
+address a {
+  color: black;
+}
+
+address > p:hover {
+  cursor: pointer;
+}
+
+.email:hover .icon {
+  color: #007bff; /* Bootstrap Blue */
+}
+
+.phone:hover .icon {
+  color: red;
+}
+
+.linkedin:hover .icon {
+  color: #0077b5; /* LinkedIn Blue */
 }
 
 /* Cosmania */
 
 .tab-button {
-  background-color: wheat;
+  background-color: #d3d0cb; /* Timber Wolf */
   cursor: pointer;
   text-align: center;
   padding: 10px 20px;
   border-radius: 10px 10px 0 0;
-  border: thin solid;
+  border: 1px solid;
 }
 
 .tab-button:hover {
-  background-color: peru;
+  background-color: #e2c044; /* Old Gold */
 }
 
 .tab-content-container {
-  background-color: wheat;
+  background-color: #d3d0cb; /* Timber Wolf */
   padding: 0 5%;
-  border: thin solid;
+  border: 1px solid;
 }
 
 .main-container {
   z-index: auto;
   padding: 10% 5% 0 5%;
-  @media only screen and (max-width: 600px) {
+}
+
+@media only screen and (max-width: 600px) {
+  .main-container {
     padding: 15% 5% 0 5%;
   }
-}
 
-.tab-container {
-  justify-content: space-between; /* Equal space between buttons */
-  align-items: center; /* Align buttons vertically if needed */
-  justify-items: start;
-  z-index: auto;
-  padding: 15vh 5vh 5vh 5vh;
-  @media only screen and (max-width: 600px) {
+  .tab-container {
     padding: 20% 5% 40% 5%;
   }
-}
 
-img {
-  max-width: 480px;
-  @media only screen and (max-width: 600px) {
+  img {
     max-width: 180px;
   }
 }
 
+.tab-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 15vh 5vh 5vh 5vh;
+  z-index: auto;
+}
+
+img {
+  max-width: 480px;
+}
+
 /* jank-bot */
+
 .jank-bot-theme {
   font-family: "VT323", monospace;
   font-style: normal;
 }
+
 .jank-bot-theme h1 {
   font-weight: bolder;
 }
 
 .jank-bot-theme em {
   color: red;
-  font-weight: light;
+  font-weight: lighter;
 }
 
 /* nav-bar */
+
 .nav-bar-container {
-  background-color: #2e5266;
+  background-color: #2e5266; /* Charcoal */
   position: fixed;
   top: 0;
   left: 0;
@@ -135,7 +167,6 @@ img {
 }
 
 .nav-bar-container a {
-  text-decoration: none;
   font-size: 1.5em;
   font-family: cursive;
   color: white;
@@ -144,7 +175,7 @@ img {
 }
 
 .nav-bar-container a:hover {
-  color: #e2c044;
+  color: #e2c044; /* Old Gold */
   text-shadow: 1px 1px 1px yellow;
 }
 
@@ -155,7 +186,7 @@ img {
 }
 
 .nav-bar-container .active {
-  color: #d3d0cb;
+  color: #d3d0cb; /* Timber Wolf */
 }
 
 .nav-bar {
@@ -171,7 +202,7 @@ img {
   padding: 0;
   position: absolute;
   top: 100%;
-  background-color: #6e8898;
+  background-color: #6e8898; /* State Gray */
 }
 
 .nav-sub-menu > li {
@@ -180,7 +211,10 @@ img {
 }
 
 /* icon */
+
 .icon {
   width: 30px;
   height: 30px;
 }
+
+/* opened book */

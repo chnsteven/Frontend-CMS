@@ -4,7 +4,6 @@ import { menus } from "../utils/constants";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import ScrollToTopButton from "./ScrollToTopButton";
-
 const AppRouter = () => {
   return (
     <Router>

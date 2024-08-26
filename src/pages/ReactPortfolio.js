@@ -33,7 +33,7 @@ function Jankbot() {
     };
   }, []);
   return (
-    <div className="tab-container">
+    <div className="main-container">
       <Markdown remarkPlugins={[remarkGfm]}>{main}</Markdown>
       <p>TODO: query</p>
     </div>
