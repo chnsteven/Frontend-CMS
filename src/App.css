@@ -18,10 +18,10 @@ a {
   text-decoration: none;
 }
 
-svg {
-  min-width: 30px;
-  min-height: 30px;
-}
+/* svg {
+  min-width: 18px;
+  min-height: 18px;
+} */
 
 /* Footer */
 
@@ -213,8 +213,18 @@ img {
 /* icon */
 
 .icon {
-  width: 30px;
-  height: 30px;
+  width: 1em;
+  height: 1em;
+  padding: 0 0.5em;
 }
 
-/* opened book */
+/* education */
+.education-style img {
+  width: 50px;
+  height: auto;
+}
+
+.education-style h1 {
+  display: flex;
+  gap: 10px;
+}
