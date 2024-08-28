@@ -21,7 +21,7 @@ const filePaths = {
 const Cosmania = () => {
   const [main, setMain] = useState("");
   const [sections, setSections] = useState([]);
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(1);
   const tabContentRef = useRef(null);
 
   const handleTabClick = (index) => {
@@ -62,28 +62,27 @@ const Cosmania = () => {
       </div>
       <div className="tab-container" ref={tabContentRef}>
         <div className="tab-button-container">
-          <button className="tab-button" onClick={() => handleTabClick(0)}>
+          <button className="tab-button" onClick={() => handleTabClick(1)}>
             1. Core Game Mechanics
           </button>
-          <button className="tab-button" onClick={() => handleTabClick(1)}>
+          <button className="tab-button" onClick={() => handleTabClick(2)}>
             2. User Interface (UI) Elements
           </button>
-          <button className="tab-button" onClick={() => handleTabClick(2)}>
+          <button className="tab-button" onClick={() => handleTabClick(3)}>
             3. State Management
           </button>
         </div>
         <div className="tab-content-container">
-          {sections.map(
-            (section, index) =>
-              activeTab === index && (
-                <section
-                  key={`section-${index}`}
-                  style={{ display: activeTab === index ? "block" : "none" }}
-                >
-                  <Markdown remarkPlugins={[remarkGfm]}>{section}</Markdown>
-                </section>
-              )
-          )}
+          {sections.map((section, index) => (
+            <section
+              key={`section-${index}`}
+              style={{
+                display: activeTab - 1 === index ? "block" : "none",
+              }}
+            >
+              <Markdown remarkPlugins={[remarkGfm]}>{section}</Markdown>
+            </section>
+          ))}
         </div>
       </div>
     </div>
