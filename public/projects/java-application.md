@@ -7,11 +7,11 @@
 
 _Video Excerpt:_ No video demo available
 
-### Overview
+## Overview
 
 [No overview available]
 
-### Features
+## Features
 
 - Utilized **AWT** and **SWING** to create a custom visual novel application with **Java**.
 - Wrote **JUnit tests** to validate integration within classes.

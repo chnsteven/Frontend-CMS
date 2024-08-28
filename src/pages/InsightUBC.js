@@ -34,7 +34,6 @@ function InsightUBC() {
   return (
     <div className="main-container">
       <Markdown remarkPlugins={[remarkGfm]}>{main}</Markdown>
-      <p>TODO: query</p>
     </div>
   );
 }

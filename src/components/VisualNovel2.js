@@ -1,6 +1,134 @@
 import React, { useState } from "react";
 
-const VisualNovelDemo2 = ({ slides }) => {
+const slides = [
+  {
+    id: "start",
+    image: "path/to/your/image1.jpg",
+    text: "Welcome to the visual novel! This is the starting slide.",
+    choices: [
+      {
+        text: "Start the adventure",
+        nextSlide: "adventure",
+      },
+      {
+        text: "Exit",
+        nextSlide: "end",
+      },
+    ],
+  },
+  {
+    id: "adventure",
+    image: "path/to/your/image2.jpg",
+    text: "You are about to embark on an exciting journey. What do you do?",
+    choices: [
+      {
+        text: "Go to the forest",
+        nextSlide: "forest",
+      },
+      {
+        text: "Visit the village",
+        nextSlide: "village",
+      },
+    ],
+  },
+  {
+    id: "forest",
+    image: "path/to/your/image3.jpg",
+    text: "The forest is dark and mysterious. You hear rustling in the bushes.",
+    choices: [
+      {
+        text: "Investigate the noise",
+        nextSlide: "noise",
+      },
+      {
+        text: "Walk away",
+        nextSlide: "walkAway",
+      },
+    ],
+  },
+  {
+    id: "village",
+    image: "path/to/your/image4.jpg",
+    text: "The village is bustling with activity. You see a market and a tavern.",
+    choices: [
+      {
+        text: "Visit the market",
+        nextSlide: "market",
+      },
+      {
+        text: "Go to the tavern",
+        nextSlide: "tavern",
+      },
+    ],
+  },
+  {
+    id: "noise",
+    image: "path/to/your/image5.jpg",
+    text: "You find a small, injured animal. What do you do?",
+    choices: [
+      {
+        text: "Help the animal",
+        nextSlide: "helpAnimal",
+      },
+      {
+        text: "Ignore it",
+        nextSlide: "ignoreAnimal",
+      },
+    ],
+  },
+  {
+    id: "walkAway",
+    image: "path/to/your/image6.jpg",
+    text: "You walk away from the noise and continue on your path.",
+    choices: [
+      {
+        text: "Go back",
+        nextSlide: "forest",
+      },
+      {
+        text: "Move forward",
+        nextSlide: "forwardPath",
+      },
+    ],
+  },
+  {
+    id: "market",
+    image: "path/to/your/image7.jpg",
+    text: "The market is filled with exotic goods. You can buy items or chat with the vendors.",
+    choices: [
+      {
+        text: "Buy an item",
+        nextSlide: "buyItem",
+      },
+      {
+        text: "Chat with a vendor",
+        nextSlide: "chatVendor",
+      },
+    ],
+  },
+  {
+    id: "tavern",
+    image: "path/to/your/image8.jpg",
+    text: "The tavern is lively. You can join a game of cards or listen to the tales of travelers.",
+    choices: [
+      {
+        text: "Join the card game",
+        nextSlide: "cardGame",
+      },
+      {
+        text: "Listen to a tale",
+        nextSlide: "tale",
+      },
+    ],
+  },
+  {
+    id: "end",
+    image: "path/to/your/image9.jpg",
+    text: "The adventure ends here. Thank you for playing!",
+    choices: [],
+  },
+];
+const VisualNovelDemo2 = () => {
   const [currentSlideId, setCurrentSlideId] = useState("start");
   const [userProfile, setUserProfile] = useState(null);
   const [showProfileCreation, setShowProfileCreation] = useState(false);

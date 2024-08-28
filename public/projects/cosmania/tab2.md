@@ -1,4 +1,4 @@
-### 2. User Interface (UI) Elements
+## 2. User Interface (UI) Elements
 
 - **Gameplay UI & Interactions**: Capture the UI in action during gameplay, such as chat bubbles, popups, inventory management, and warnings. This can also include tutorials or guides displayed during gameplay.
 

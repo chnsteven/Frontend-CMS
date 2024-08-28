@@ -1,4 +1,4 @@
-### 3. State Management
+## 3. State Management
 
 - **Finite State Machine (FSM)**: Show how the FSM manages NPC and player states. You could visualize state transitions for NPCs or the player, and how different states trigger specific behaviors or animations.
 

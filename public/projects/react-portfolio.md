@@ -1,17 +1,15 @@
 # React Portfolio
 
-![Cover Image](../cover_imgs/cover-reactPortfolio.png)
-
 **Start Date:** December 2023  
 **End Date:** January 2024
 
-_Video Excerpt:_ No video demo available
+[_Link to portfolio_](https://steven-chen-portfolio.netlify.app/)
 
-### Overview
+## Overview
 
 Developed a **React** app integrating **client** and **server** components.
 
-### Features
+## Features
 
 - Implemented server-side functionality with JavaScript to create **REST API** endpoints for retrieving personal data stored in markdown format.
 - Utilized **Axios** for client-side data fetching, enabling dynamic content rendering on the website.

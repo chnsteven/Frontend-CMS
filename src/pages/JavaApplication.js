@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchMarkdownContent } from "../utils/functions";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import VisualNovel2 from "../components/VisualNovel2";
 
 const filePaths = {
   main: "java-application.md",
@@ -35,7 +36,7 @@ function Jankbot() {
   return (
     <div className="main-container">
       <Markdown remarkPlugins={[remarkGfm]}>{main}</Markdown>
-      <p>TODO: query</p>
+      <VisualNovel2 />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-### 1. Core Game Mechanics
+## 1. Core Game Mechanics
 
 - **Interactable & Collectable GameObjects**: Demonstrate how players interact with and collect objects in the game. Highlight the interfaces and serializable structs used to manage these objects.
 
