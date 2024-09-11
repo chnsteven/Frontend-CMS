@@ -228,3 +228,32 @@ img {
   display: flex;
   gap: 10px;
 }
+
+/* Roadmap */
+:root {
+  --grid-size: 10; /* Default grid size */
+}
+
+.roadmap-container {
+  display: grid;
+  grid-template-columns: repeat(
+    var(--grid-columns),
+    1fr
+  ); /* Use CSS variable for columns */
+  grid-template-rows: repeat(
+    var(--grid-rows),
+    1fr
+  ); /* Use CSS variable for rows */
+  gap: 10px; /* Optional: space between cells */
+}
+
+.grid-cell {
+  border: 1px solid #ccc; /* Optional: visual separation */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.roadmap-step {
+  text-align: center;
+}

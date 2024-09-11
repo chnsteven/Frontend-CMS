@@ -19,5 +19,3 @@ _This video was made by my partner._
 - Developed 50+ unit and integration tests using **mocha** and **chai** packages for asynchronous black-box and glass-box testing.
 
 ## Demo
-
-TODO: Query

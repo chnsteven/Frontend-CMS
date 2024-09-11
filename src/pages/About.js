@@ -34,7 +34,6 @@ function About() {
   return (
     <div className="tab-container">
       <Markdown remarkPlugins={[remarkGfm]}>{main}</Markdown>
-      <p>TODO: query</p>
     </div>
   );
 }
