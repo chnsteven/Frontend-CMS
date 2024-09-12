@@ -1,4 +1,4 @@
-# University of British Columbia (UBC) ![University of British Columbia](./education/ubc-logo.png)
+# University of British Columbia ![University of British Columbia](./education/ubc-logo.png)
 
 **Location:** Vancouver, BC, Canada  
 **Faculty:** Faculty of Science  

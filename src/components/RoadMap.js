@@ -12,13 +12,13 @@ const roadmapSteps = [
     location: { x: 0, y: 0 },
   },
   {
-    title: "Translate the specification into a test suite",
-    content: <p>Follow a modern technique for building software: TDD</p>,
+    title: "Translate specification",
+    content: <p>Test Driven Development</p>,
     media: "",
     location: { x: 0, y: 1 },
   },
   {
-    title: "Evaluate test suite on AutoTest",
+    title: "AutoTest",
     content: (
       <p>
         Kill the mutants! <FontAwesomeIcon icon={faFaceLaughBeam} />
@@ -139,7 +139,7 @@ const Roadmap = () => {
 
   return (
     <div>
-      <h3>Roadmap</h3>
+      <h2>Roadmap</h2>
       <div className="roadmap-container">
         {grid.map((row, rowIndex) =>
           row.map((cell, colIndex) => (

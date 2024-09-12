@@ -3,6 +3,7 @@ import { fetchMarkdownContent } from "../utils/functions";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Roadmap from "../components/RoadMap";
+import Demo from "../components/Demo";
 
 const filePaths = {
   main: "insight-ubc.md",
@@ -36,6 +37,7 @@ function InsightUBC() {
     <div className="main-container">
       <Markdown remarkPlugins={[remarkGfm]}>{main}</Markdown>
       <Roadmap />
+      <Demo />
     </div>
   );
 }

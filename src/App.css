@@ -257,3 +257,9 @@ img {
 .roadmap-step {
   text-align: center;
 }
+
+/* Code Block */
+.code-block {
+  height: 300px;
+  overflow-y: scroll;
+}

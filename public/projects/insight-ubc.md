@@ -17,5 +17,3 @@ _This video was made by my partner._
 - Implemented the backend using the **Facade pattern** with ts-node.
 - Practiced **version control**, **code review**, **scrum meetings**, and **Test-Driven Development (TDD)** in **TypeScript (TS)**.
 - Developed 50+ unit and integration tests using **mocha** and **chai** packages for asynchronous black-box and glass-box testing.
-
-## Demo
