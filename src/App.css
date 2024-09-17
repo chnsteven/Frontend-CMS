@@ -89,8 +89,8 @@ address > p:hover {
 
 /* Cosmania */
 
-.tab-button {
-  background-color: #d3d0cb; /* Timber Wolf */
+/* .tab-button {
+  background-color: #d3d0cb;
   cursor: pointer;
   text-align: center;
   padding: 10px 20px;
@@ -99,7 +99,46 @@ address > p:hover {
 }
 
 .tab-button:hover {
-  background-color: #e2c044; /* Old Gold */
+  background-color: #e2c044;
+} */
+
+/* .tab-button {
+  background-color: #d3d0cb;
+  padding: 10px 25px;
+  border: 2px solid black;
+  border-bottom: none;
+  border-radius: 50% 50% 0 0;
+  display: inline-block;
+  text-align: center;
+  line-height: 30px;
+  position: relative;
+  margin: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.tab-button:hover {
+  background-color: #e2c044;
+} */
+
+.tab-button {
+  background-color: #d3d0cb;
+  padding: 15px 30px;
+  border: 2px solid black;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom: none;
+  display: inline-block;
+  text-align: center;
+  line-height: 1;
+  position: relative;
+  margin: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.tab-button:hover {
+  background-color: #e2c044;
 }
 
 .tab-content-container {
@@ -231,7 +270,8 @@ img {
 
 /* Roadmap */
 :root {
-  --grid-size: 10; /* Default grid size */
+  --grid-rows: 4; /* Default grid size */
+  --grid-columns: 3;
 }
 
 .roadmap-container {
@@ -262,4 +302,47 @@ img {
 .code-block {
   height: 300px;
   overflow-y: scroll;
+  padding: 15px;
 }
+
+/* Search filter */
+.search-filter {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+  grid-auto-flow: row;
+}
+
+.search-filter > div {
+  display: flex;
+  border: solid 1px #ccc;
+}
+
+.search-filter label {
+  display: inline-block;
+  width: 100px;
+}
+label + input {
+  margin-left: 10px;
+}
+
+input + span {
+  padding-right: 30px;
+}
+
+.demo-container > div {
+  margin: 15px 0;
+}
+/* 
+input:invalid + span::after {
+  position: absolute;
+  content: "✖";
+  padding-left: 5px;
+}
+
+input:valid + span::after {
+  position: absolute;
+  content: "✓";
+  padding-left: 5px;
+} */

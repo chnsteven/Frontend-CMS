@@ -1,6 +1,6 @@
 # Java Application
 
-![Cover Image](../cover_imgs/cover-javaApplication.png)
+![Cover Image](./cover_imgs/cover-javaApplication.png)
 
 **Start Date:** September 2019  
 **End Date:** December 2019

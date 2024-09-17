@@ -34,7 +34,8 @@ const roadmapSteps = [
     title: "Dataset Processor: Zip Parsing",
     content: (
       <p>
-        <p>Load and process zip files, convert them into data model(s).</p>
+        Load and process zip files, convert them into data model(s).
+        <br />
         <em>Parsing + Validation + Data Modelling</em>
       </p>
     ),
@@ -45,7 +46,8 @@ const roadmapSteps = [
     title: "Query Engine",
     content: (
       <p>
-        <p>Find subset that matches a query</p>
+        Find subset that matches a query
+        <br />
         <em>Parsing + Validation + Collecting</em>
       </p>
     ),
@@ -57,7 +59,8 @@ const roadmapSteps = [
     title: "Dataset Processor: HTML Parsing",
     content: (
       <p>
-        <p>Understand document tree and extract information</p>
+        Understand document tree and extract information
+        <br />
         <strike>hard code</strike>
       </p>
     ),
@@ -66,11 +69,7 @@ const roadmapSteps = [
   },
   {
     title: "Dataset Processor: Geolocation",
-    content: (
-      <p>
-        <p>Sending the Request, encoding the address</p>
-      </p>
-    ),
+    content: <p>Sending the Request, encoding the address</p>,
     media: "",
     location: { x: 2, y: 1 },
   },
@@ -78,10 +77,8 @@ const roadmapSteps = [
     title: "Query Engine: Aggregation",
     content: (
       <p>
-        <p>
-          Support aggregated queries like <strong>apply</strong> and{" "}
-          <strong>sorting</strong>
-        </p>
+        Support aggregated queries like <strong>apply</strong> and <br />
+        <strong>sorting</strong>
       </p>
     ),
     media: "",
@@ -95,11 +92,7 @@ const roadmapSteps = [
   },
   {
     title: "Frontend",
-    content: (
-      <p>
-        <p>Implement user stories and REST endpoints</p>
-      </p>
-    ),
+    content: <p>Implement user stories and REST endpoints</p>,
     media: "",
     location: { x: 3, y: 1 },
   },

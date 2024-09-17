@@ -1,125 +1,204 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { CodeBlock, dracula } from "react-code-blocks";
+import { insightUBCDemoData } from "../utils/constants";
 
-const code = `[
-    {
-    "course_avg": 85.2,
-    "course_pass": 200,
-    "course_fail": 15,
-    "course_audit": 5,
-    "course_year": 2023,
-    "course_dept": "CS",
-    "course_id": "CPSC110",
-    "course_instructor": "Dr. Smith",
-    "course_title": "Introduction to Programming",
-    "course_uuid": "CPSC110-2023S"
-    },
-    {
-    "course_avg": 90.1,
-    "course_pass": 180,
-    "course_fail": 10,
-    "course_audit": 12,
-    "course_year": 2022,
-    "course_dept": "MATH",
-    "course_id": "MATH100",
-    "course_instructor": "Dr. Lee",
-    "course_title": "Calculus I",
-    "course_uuid": "MATH100-2022W"
-    },
-    {
-    "course_avg": 78.3,
-    "course_pass": 220,
-    "course_fail": 25,
-    "course_audit": 8,
-    "course_year": 2021,
-    "course_dept": "PHYS",
-    "course_id": "PHYS101",
-    "course_instructor": "Dr. Johnson",
-    "course_title": "General Physics I",
-    "course_uuid": "PHYS101-2021F"
-    },
-    {
-    "course_avg": 92.5,
-    "course_pass": 150,
-    "course_fail": 5,
-    "course_audit": 2,
-    "course_year": 2020,
-    "course_dept": "CHEM",
-    "course_id": "CHEM120",
-    "course_instructor": "Dr. Brown",
-    "course_title": "Organic Chemistry",
-    "course_uuid": "CHEM120-2020F"
-    },
-    {
-    "course_avg": 87.4,
-    "course_pass": 210,
-    "course_fail": 18,
-    "course_audit": 10,
-    "course_year": 2019,
-    "course_dept": "BIO",
-    "course_id": "BIOL200",
-    "course_instructor": "Dr. Davis",
-    "course_title": "Cell Biology",
-    "course_uuid": "BIOL200-2019S"
-    },
-    {
-        "course_avg": 54.5,
-        "course_pass": 206,
-        "course_fail": 5,
-        "course_audit": 2,
-        "course_year": 2018,
-        "course_dept": "BIO",
-        "course_id": "BIO281",
-        "course_instructor": "Dr. Johnson",
-        "course_title": "Genetics",
-        "course_uuid": "BIO281-2018S"
-    },
-    {
-        "course_avg": 67.8,
-        "course_pass": 231,
-        "course_fail": 15,
-        "course_audit": 19,
-        "course_year": 2021,
-        "course_dept": "PHYS",
-        "course_id": "PHYS183",
-        "course_instructor": "Dr. Johnson",
-        "course_title": "Quantum Mechanics",
-        "course_uuid": "PHYS183-2021W"
-    },
-    {
-        "course_avg": 63.6,
-        "course_pass": 261,
-        "course_fail": 6,
-        "course_audit": 14,
-        "course_year": 2018,
-        "course_dept": "CS",
-        "course_id": "CS420",
-        "course_instructor": "Dr. Lee",
-        "course_title": "Algorithms",
-        "course_uuid": "CS420-2018S"
-    },
-    {
-        "course_avg": 89.4,
-        "course_pass": 207,
-        "course_fail": 31,
-        "course_audit": 16,
-        "course_year": 2021,
-        "course_dept": "MATH",
-        "course_id": "MATH296",
-        "course_instructor": "Dr. Brown",
-        "course_title": "Probability Theory",
-        "course_uuid": "MATH296-2021F"
+const validateSubquery = (subquery) => {
+  try {
+    const parts = subquery.split(" ");
+
+    // Check if there are exactly 3 parts (field, operator, value)
+    if (parts.length !== 3 && parts.length !== 2) {
+      throw new Error("Invalid query format");
     }
-]`;
+
+    // You can add additional validation for the parts if needed
+    return true;
+  } catch (e) {
+    alert(e.message);
+    return false;
+  }
+};
+
+const categorizeSubquery = (subquery) => {
+  if (typeof subquery !== "string") return false;
+
+  const signs = [">", "<", ">=", "<=", "=", "!="];
+  const orders = ["ascending", "descending"];
+  const containsAnySign = () => {
+    return (
+      signs.some((sign) => subquery.includes(sign)) &&
+      !orders.some((order) => subquery.includes(order))
+    );
+  };
+  const containsAnyOrder = () => {
+    return (
+      !signs.some((sign) => subquery.includes(sign)) &&
+      orders.some((order) => subquery.includes(order))
+    );
+  };
+  if (containsAnySign()) {
+    return "comparison query";
+  } else if (containsAnyOrder()) {
+    return "sorting query";
+  } else {
+    return false;
+  }
+};
+
+const compareQuery = (subquery, data) => {
+  const [field, operator, value] = subquery.split(" ");
+  const numericValue = parseFloat(value);
+  const filteredData = data.filter((item) => {
+    const fieldValue = item[`course_${field}`];
+    switch (operator) {
+      case "=":
+        return fieldValue === numericValue;
+      case "!=":
+        return fieldValue !== numericValue;
+      case ">":
+        return fieldValue > numericValue;
+      case "<":
+        return fieldValue < numericValue;
+      case ">=":
+        return fieldValue >= numericValue;
+      case "<=":
+        return fieldValue <= numericValue;
+      default:
+        return false;
+    }
+  });
+  return filteredData;
+};
+
+const sortQuery = (subquery, data) => {
+  const [field, order] = subquery.split(" ");
+  const sortedData = data.sort((a, b) => {
+    const aValue = a[`course_${field}`];
+    const bValue = b[`course_${field}`];
+    if (order === "ascending") {
+      return aValue - bValue;
+    } else if (order === "descending") {
+      return bValue - aValue;
+    } else {
+      console.error("Invalid order");
+      return 0;
+    }
+  });
+  return sortedData;
+};
 function Demo() {
+  const queryRef = useRef("");
+  const [data, setData] = useState(insightUBCDemoData);
+  const [searchFilterValues, setSearchFilterValues] = useState({});
+  const fields = Object.keys(data[0]).map((key) => key.split("_")[1]); // Get all the field names from the first item
+  const [visibleFields, setVisibleFields] = useState(
+    fields.reduce((acc, field) => ({ ...acc, [field]: true }), {})
+  ); // State to keep track of visible columns
+
+  const handleInputChange = (e, field) => {
+    setSearchFilterValues({
+      ...searchFilterValues,
+      [field]: e.target.value,
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(searchFilterValues);
+    const filteredData = data.filter((course) => {});
+
+    // const subqueries = query.split(",").map((item) => item.trim());
+    // subqueries.forEach((subquery) => {
+    //   if (validateSubquery(subquery)) {
+    //     const queryType = categorizeSubquery(subquery);
+    //     if (typeof queryType === "string") {
+    //       switch (queryType) {
+    //         case "comparison query":
+    //           setData(compareQuery(subquery, insightUBCDemoData));
+    //           break;
+    //         case "sorting query":
+    //           setData(sortQuery(subquery, insightUBCDemoData));
+    //           break;
+    //         default:
+    //           console.error("Invalid query type");
+    //           break;
+    //       }
+    //     }
+    //   }
+    // });
+  };
+
   return (
-    <div className="code-block">
-      <CodeBlock
-        text={code}
-        language={"json"}
-        showLineNumbers={false}
-        theme={dracula}
-      />
+    <div className="demo-container">
+      <h2>Demo</h2>
+      <div>
+        <h3>Sample Data (AI generated)</h3>
+        <div className="code-block">
+          <CodeBlock
+            text={JSON.stringify(insightUBCDemoData, null, 4)}
+            language="json"
+            showLineNumbers={false}
+            theme={dracula}
+          />
+        </div>
+      </div>
+      <div>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <fieldset>
+            <legend>Search Filters (optional)</legend>
+            <div className="search-filter">
+              {Object.keys(data[0]).map((key, index) => {
+                const field = key.split("_")[1];
+                return (
+                  <div key={`search-filter-container-${index}`}>
+                    <label htmlFor={`search-filter-${index}`}>
+                      {field.toUpperCase()}
+                    </label>
+                    <input
+                      id={`search-filter-${index}`}
+                      key={`search-filter-${index}`}
+                      type="text"
+                      placeholder="Enter a value or leave blank"
+                      onChange={(e) => handleInputChange(e, field)}
+                    />
+                    <span className="validity"></span>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="search-filter-submit">
+              <button type="submit">Apply Filters</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+
+      <div className="result-container">
+        <h3>Search results</h3>
+        <table>
+          <thead>
+            <tr>
+              {Object.keys(data[0]).map((key, index) => {
+                const field = key.split("_")[1];
+                return visibleFields[field] ? (
+                  <th key={`th-${field}-${index}`}>{field.toUpperCase()}</th>
+                ) : null; // Hide the column if it's not checked
+              })}
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((course, rowIndex) => (
+              <tr key={`row-${rowIndex}`}>
+                {Object.entries(course).map(([key, value], colIndex) => {
+                  const field = key.split("_")[1];
+                  return visibleFields[field] ? (
+                    <td key={`${key}-${rowIndex}`}>{value}</td>
+                  ) : null; // Hide the data cell if the column is not visible
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
