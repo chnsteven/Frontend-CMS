@@ -55,6 +55,23 @@ export const menus = [
   },
 ];
 
+export const operatorMap = {
+  "greater-than": (a, b) => a > b,
+  "greater-than-equal": (a, b) => a >= b,
+  "less-than": (a, b) => a < b,
+  "less-than-equal": (a, b) => a <= b,
+  equal: (a, b) => a === b,
+  "not-equal": (a, b) => a !== b,
+};
+
+export const stringMatchingFields = [
+  "dept",
+  "id",
+  "instructor",
+  "title",
+  "uuid",
+];
+
 export const insightUBCDemoData = [
   {
     course_avg: 85.2,

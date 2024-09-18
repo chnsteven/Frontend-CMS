@@ -12,6 +12,7 @@
 body {
   background-color: #9fb1bc; /* Cadet Gray */
   font-size: 18px;
+  font-family: cursive;
 }
 
 a {
@@ -207,7 +208,6 @@ img {
 
 .nav-bar-container a {
   font-size: 1.5em;
-  font-family: cursive;
   color: white;
   font-weight: normal;
   cursor: pointer;
@@ -298,51 +298,49 @@ img {
   text-align: center;
 }
 
-/* Code Block */
+/* Demo */
 .code-block {
   height: 300px;
   overflow-y: scroll;
   padding: 15px;
 }
 
-/* Search filter */
 .search-filter {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 20em);
   grid-template-rows: repeat(4, 1fr);
-  gap: 10px;
+  gap: 0.5em 2em;
   grid-auto-flow: row;
 }
 
 .search-filter > div {
   display: flex;
-  border: solid 1px #ccc;
+  border: 1px solid;
 }
 
 .search-filter label {
+  cursor: pointer;
   display: inline-block;
-  width: 100px;
-}
-label + input {
+  width: 10em;
   margin-left: 10px;
 }
 
-input + span {
-  padding-right: 30px;
+.search-filter input {
+  flex: 1;
 }
 
 .demo-container > div {
   margin: 15px 0;
 }
-/* 
-input:invalid + span::after {
-  position: absolute;
-  content: "✖";
-  padding-left: 5px;
+
+.search-filter-buttons > button {
+  cursor: pointer;
+  margin-right: 10px;
 }
 
-input:valid + span::after {
-  position: absolute;
-  content: "✓";
-  padding-left: 5px;
-} */
+.result-container > table,
+th,
+td {
+  border: 1px solid;
+  padding: 0 10px;
+}
