@@ -1,11 +1,7 @@
 # Java Application
 
-![Cover Image](./cover_imgs/cover-javaApplication.png)
-
 **Start Date:** September 2019  
 **End Date:** December 2019
-
-_Video Excerpt:_ No video demo available
 
 ## Overview
 

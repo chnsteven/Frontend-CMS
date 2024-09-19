@@ -191,7 +191,7 @@ img {
 }
 
 .jank-bot-theme em {
-  color: red;
+  color: darkred;
   font-weight: lighter;
 }
 
@@ -338,9 +338,21 @@ img {
   margin-right: 10px;
 }
 
+.result-container th {
+  cursor: pointer;
+}
+
 .result-container > table,
 th,
 td {
-  border: 1px solid;
+  text-align: center;
+  border: 2px solid;
   padding: 0 10px;
+  min-width: 8em;
+  min-height: 3em;
+  border-spacing: 5px 10px;
+}
+
+.result-container p {
+  margin: 0;
 }

@@ -5,15 +5,30 @@ import {
   operatorMap,
   stringMatchingFields,
 } from "../utils/constants";
+import {
+  faFilter,
+  faSort,
+  faSortUp,
+  faSortDown,
+  faToggleOn,
+  faToggleOff,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Demo() {
   const [data, setData] = useState(initialData);
-  const [searchFilters, setSearchFilters] = useState({});
   const fields =
     data.length > 0 ? Object.keys(data[0]).map((key) => key.split("_")[1]) : []; // Get all the field names only if data exists
-  const [visibleFields, setVisibleFields] = useState(
-    fields.reduce((acc, field) => ({ ...acc, [field]: true }), {})
-  ); // State to keep track of visible columns
+
+  const [unsortedData, setUnsortedData] = useState(data);
+  const [searchFilters, setSearchFilters] = useState({});
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
+  const [visibilityConfig, setVisibilityConfig] = useState(
+    fields.map((field) => ({
+      field: field,
+      visible: true,
+    }))
+  );
 
   const handleInputChange = (e, field) => {
     setSearchFilters({
@@ -58,14 +73,86 @@ function Demo() {
 
     const filteredData = applyFilters(data, searchFilters);
     setData(filteredData);
+    setUnsortedData(filteredData);
   };
 
   const handleResetFilters = (e) => {
     e.preventDefault();
     setSearchFilters({});
     setData(initialData);
+    setUnsortedData(initialData);
   };
 
+  const handleVisibility = (field) => {
+    setVisibilityConfig((prevConfig) =>
+      prevConfig.map((item) =>
+        item.field === field ? { ...item, visible: !item.visible } : item
+      )
+    );
+  };
+
+  const handleShowAllColumns = () => {
+    setVisibilityConfig(
+      fields.map((field) => ({
+        field: field,
+        visible: true,
+      }))
+    );
+  };
+
+  const handleShowNoColumns = () => {
+    setVisibilityConfig(
+      fields.map((field) => ({
+        field: field,
+        visible: false,
+      }))
+    );
+  };
+  const handleResetOrder = () => {
+    setSortConfig({ key: null, direction: null });
+    setData(unsortedData);
+  };
+
+  const handleSort = (field) => {
+    let direction;
+
+    if (sortConfig.key === field && sortConfig.direction === "desc") {
+      direction = "asc";
+    } else if (sortConfig.key === field && sortConfig.direction === "asc") {
+      direction = "desc";
+    } else {
+      direction = "asc";
+    }
+
+    const sortedData = [...data].sort((a, b) => {
+      const aValue = a[`course_${field}`];
+      const bValue = b[`course_${field}`];
+
+      if (direction === "asc") return aValue < bValue ? -1 : 1;
+      if (direction === "desc") return aValue > bValue ? -1 : 1;
+      return 0; // No sorting if direction is null
+    });
+
+    setData(sortedData);
+    setSortConfig({ key: field, direction });
+  };
+
+  const getSortIcon = (field) => {
+    if (sortConfig.key === field) {
+      if (sortConfig.direction === "asc") return faSortUp;
+      if (sortConfig.direction === "desc") return faSortDown;
+    }
+    return faSort;
+  };
+
+  const getVisibilityIcon = (field) => {
+    const fieldVisibility = visibilityConfig.find(
+      (item) => item.field === field
+    );
+    return fieldVisibility && fieldVisibility.visible
+      ? faToggleOn
+      : faToggleOff;
+  };
   return (
     <div className="demo-container">
       <h2>Demo</h2>
@@ -83,7 +170,9 @@ function Demo() {
       <div>
         <form autoComplete="off">
           <fieldset>
-            <legend>Search Filters (optional)</legend>
+            <legend>
+              Search Filters <FontAwesomeIcon icon={faFilter} />
+            </legend>
             <div className="search-filter">
               {fields.map((field, index) => {
                 const filter = searchFilters[field] || {};
@@ -144,28 +233,48 @@ function Demo() {
       </div>
 
       <div className="result-container">
-        <h3>Search results</h3>
+        <span>
+          <h3>Search results</h3>
+          <button onClick={handleShowAllColumns}>Show All Columns</button>
+          <button onClick={handleShowNoColumns}>Show No Columns</button>
+          <button onClick={handleResetOrder}>Reset Order</button>
+        </span>
         {data.length === 0 ? (
           <p>No results found. Please adjust your filters.</p>
         ) : (
           <table>
             <thead>
               <tr>
-                {fields.map((field, index) =>
-                  visibleFields[field] ? (
-                    <th key={`th-${field}-${index}`}>{field.toUpperCase()}</th>
-                  ) : null
-                )}
+                {fields.map((field, index) => (
+                  <th
+                    key={`th-icon-${field}-${index}`}
+                    onClick={() => handleVisibility(field)}
+                  >
+                    <FontAwesomeIcon icon={getVisibilityIcon(field)} />
+                  </th>
+                ))}
+              </tr>
+              <tr>
+                {fields.map((field, index) => (
+                  <th
+                    key={`th-${field}-${index}`}
+                    onClick={() => handleSort(field)}
+                  >
+                    <p>{field.toUpperCase()}</p>
+                    <FontAwesomeIcon icon={getSortIcon(field)} />
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
               {data.map((course, rowIndex) => (
                 <tr key={`row-${rowIndex}`}>
                   {Object.entries(course).map(([key, value], colIndex) => {
-                    const field = key.split("_")[1];
-                    return visibleFields[field] ? (
+                    return visibilityConfig[colIndex].visible ? (
                       <td key={`${key}-${rowIndex}`}>{value}</td>
-                    ) : null;
+                    ) : (
+                      <td key={`${key}-${rowIndex}`}>&nbsp;</td>
+                    );
                   })}
                 </tr>
               ))}
