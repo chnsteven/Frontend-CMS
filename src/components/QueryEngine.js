@@ -15,7 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Demo() {
+function QueryEngine() {
   const [data, setData] = useState(initialData);
   const fields =
     data.length > 0 ? Object.keys(data[0]).map((key) => key.split("_")[1]) : []; // Get all the field names only if data exists
@@ -286,4 +286,4 @@ function Demo() {
   );
 }
 
-export default Demo;
+export default QueryEngine;
