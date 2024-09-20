@@ -380,14 +380,26 @@ td {
   padding: 10px;
 }
 
+.visual-novel-profile {
+  background-color: blanchedalmond;
+  padding: 5px 0;
+}
+
+.visual-novel-profile span {
+  padding: 20px;
+}
+
 .visual-novel-background {
   flex: 3;
   background-size: cover;
   background-position: center;
 }
 
-.profile-creation-popup {
+.popup {
+  display: flex;
+  flex-direction: column;
   position: fixed;
+  gap: 10px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

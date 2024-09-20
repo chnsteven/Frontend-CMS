@@ -24,7 +24,8 @@ const slides = [
 const VisualNovel = () => {
   const [currentSlideId, setCurrentSlideId] = useState("start");
   const [userProfile, setUserProfile] = useState(null);
-  const [showProfileCreation, setShowProfileCreation] = useState(false);
+  const [showProfilePopup, setShowProfilePopup] = useState(false);
+  const [showConfirmPopup, setShowConfirmPopup] = useState(false);
 
   // Find the current slide based on ID
   const currentSlide =
@@ -32,7 +33,8 @@ const VisualNovel = () => {
 
   const createProfile = (name, gender) => {
     setUserProfile({ name, gender });
-    setShowProfileCreation(false);
+    setShowProfilePopup(false);
+    setShowConfirmPopup(true);
   };
 
   const goToSlide = (nextSlideId) => {
@@ -45,7 +47,9 @@ const VisualNovel = () => {
     <div className="visual-novel-container">
       {/* Top Buttons */}
       <div className="visual-novel-top-ui">
-        <button onClick={() => setShowProfileCreation(true)}>New</button>
+        <button onClick={() => setShowProfilePopup(true)}>New</button>
+        <button>Play Background Music</button>
+        <button>Pause Background Music</button>
         <button
           onClick={() =>
             alert(
@@ -58,6 +62,12 @@ const VisualNovel = () => {
           Profile
         </button>
       </div>
+      {userProfile && (
+        <span className="visual-novel-profile">
+          <span>Name: {userProfile.name}</span>
+          <span>Gender: {userProfile.gender}</span>
+        </span>
+      )}
 
       {/* Scene Image */}
       <div className="visual-novel-background"></div>
@@ -88,15 +98,16 @@ const VisualNovel = () => {
         <button onClick={() => goToSlide(currentSlide.next)}>Next</button>
       </div>
 
-      {/* Profile Creation Popup */}
-      {showProfileCreation && (
-        <div className="profile-creation-popup">
+      {/* Profile Popup */}
+      {showProfilePopup && (
+        <form className="popup" autoComplete="off">
           <h2>Create Profile</h2>
+          <label for="nameInput">Name</label>
           <input type="text" placeholder="Enter your name" id="nameInput" />
+          <label for="genderSelect">Gender</label>
           <select id="genderSelect">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
-            <option value="Other">Other</option>
           </select>
           <button
             onClick={() => {
@@ -107,7 +118,36 @@ const VisualNovel = () => {
           >
             Create
           </button>
-          <button onClick={() => setShowProfileCreation(false)}>Cancel</button>
+          <button onClick={() => setShowProfilePopup(false)}>Cancel</button>
+        </form>
+      )}
+
+      {/* Confirm Popup */}
+      {showConfirmPopup && (
+        <div className="popup">
+          {userProfile.name !== "" ? (
+            <>
+              <h2>Profile Created</h2>
+              <p>
+                Name: {userProfile.name}, Gender: {userProfile.gender}
+              </p>
+            </>
+          ) : (
+            <>
+              <h2>Username Invalid</h2>
+              <p>Username must contain at least 1 character</p>
+              <button
+                onClick={() => {
+                  setShowConfirmPopup(false);
+                  setShowProfilePopup(true);
+                }}
+              >
+                Try Again
+              </button>
+            </>
+          )}
+
+          <button onClick={() => setShowConfirmPopup(false)}>Close</button>
         </div>
       )}
     </div>
