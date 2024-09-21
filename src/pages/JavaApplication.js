@@ -5,11 +5,11 @@ import remarkGfm from "remark-gfm";
 import VisualNovel from "../components/VisualNovel";
 
 const filePaths = {
-  main: "java-application.md",
+  main: "java-application/main.md",
   tabs: [],
 };
 
-function Jankbot() {
+function JavaApplication() {
   const [main, setMain] = useState("");
 
   useEffect(() => {
@@ -37,4 +37,4 @@ function Jankbot() {
   );
 }
 
-export default Jankbot;
+export default JavaApplication;

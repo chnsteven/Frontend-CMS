@@ -368,6 +368,12 @@ td {
   flex-direction: column;
 }
 
+.visual-novel-choices {
+  flex: 2;
+  padding: 15px;
+  background-color: #f0f0f0;
+}
+
 .visual-novel-top-ui {
   display: flex;
   justify-content: space-between;
@@ -390,9 +396,9 @@ td {
 }
 
 .visual-novel-background {
-  flex: 3;
-  background-size: cover;
-  background-position: center;
+  width: 100%; /* Stretch the image to full width */
+  height: 100%; /* Stretch the image to full height */
+  object-fit: fill; /* Maintain aspect ratio while covering the area */
 }
 
 .popup {
@@ -407,4 +413,12 @@ td {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  width: 20%;
+  max-width: 20%;
+}
+
+.error-message {
+  color: rgba(255, 0, 0, 0.75);
+  font-size: 0.8em;
+  font-weight: bold;
 }

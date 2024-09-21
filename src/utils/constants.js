@@ -182,3 +182,81 @@ export const insightUBCDemoData = [
     course_uuid: "MATH296-2021F",
   },
 ];
+
+export const getSlides = (name, gender) => {
+  return [
+    {
+      id: "start",
+      text: `${name} finds ${
+        gender === "male" ? "himself" : "herself"
+      } in a mysterious forest, 
+      he trees seem to whisper secrets as ${name} passes by. What does ${name} do?`,
+      choices: [
+        { text: "Enter the forest", nextSlideId: "forestEntry" },
+        { text: "Follow the river", nextSlideId: "riverFollow" },
+      ],
+    },
+    {
+      id: "forestEntry",
+      text: `The forest is filled with the sound of crickets and the distant howl of a wolf. 
+      As ${name} moves deeper into the woods, ${
+        gender === "male" ? "he" : "she"
+      } comes across a fork in the path.`,
+      choices: [
+        { text: "Take the left path", nextSlideId: "mysteriousGlade" },
+        { text: "Take the right path", nextSlideId: "ancientTree" },
+      ],
+    },
+    {
+      id: "riverFollow",
+      text: `${name} decides to follow the river. The gentle sound of water is calming. 
+      After a while, ${name} spots an old wooden bridge.`,
+      choices: [
+        { text: "Cross the bridge", nextSlideId: "bridgeCrossing" },
+        { text: "Stay by the river", nextSlideId: "stayByRiver" },
+      ],
+    },
+    {
+      id: "bridgeCrossing",
+      text: `${name} embarks across the old bridge, feeling the wooden planks shift beneath ${
+        gender === "male" ? "his" : "her"
+      } feet. 
+      The river below flows like a tapestry of stories intertwined in a mosaic of time. The other side offers no clear path, only the transcendent quiet of the forest.`,
+      choices: [{ text: "End of the journey", nextSlideId: null }],
+    },
+    {
+      id: "stayByRiver",
+      text: `${name} decides to stay by the river, listening to the kaleidoscopic sounds of nature. 
+      The verdant landscape around seems to whisper tales of old. The flow of water and the melody of birds create a captivating, timeless moment.`,
+      choices: [{ text: "End of the journey", nextSlideId: null }],
+    },
+    {
+      id: "mysteriousGlade",
+      text: `${name} steps into a quiet glade. The trees are taller here, and the air feels thick with magic. 
+      A strange light flickers ahead.`,
+      choices: [{ text: "Investigate the light", nextSlideId: "insideTree" }],
+    },
+    {
+      id: "ancientTree",
+      text: `Taking the right path, ${name} arrives at an enormous ancient tree. 
+      Its twisted roots seem to form a natural doorway. 
+      There's something eerie about this place, but it's also inviting.`,
+      choices: [
+        { text: "Enter the tree", nextSlideId: "insideTree" },
+        { text: "Turn back", nextSlideId: "forestEntry" },
+      ],
+    },
+    {
+      id: "insideTree",
+      text: `${name} steps through the natural doorway formed by the roots and enters a vast, hollow space inside the ancient tree. 
+      The walls are lined with glowing symbols, and the air hums with a strange energy. As ${
+        gender === "male" ? "he" : "she"
+      } explores deeper, a feeling of peace washes over ${name}, and ${
+        gender === "male" ? "he" : "she"
+      } realizes this is the end of the journey... for now.`,
+      choices: [
+        { text: "End of the journey", nextSlideId: null }, // No further slides
+      ],
+    },
+  ];
+};
