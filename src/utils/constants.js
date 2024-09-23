@@ -184,13 +184,14 @@ export const insightUBCDemoData = [
 ];
 
 export const getSlides = (name, gender) => {
+  name = `<strong>${name}</strong>`;
   return [
     {
       id: "start",
       text: `${name} finds ${
         gender === "male" ? "himself" : "herself"
       } in a mysterious forest, 
-      he trees seem to whisper secrets as ${name} passes by. What does ${name} do?`,
+      the trees seem to whisper secrets as ${name} passes by. What does ${name} do?`,
       choices: [
         { text: "Enter the forest", nextSlideId: "forestEntry" },
         { text: "Follow the river", nextSlideId: "riverFollow" },
@@ -222,13 +223,13 @@ export const getSlides = (name, gender) => {
         gender === "male" ? "his" : "her"
       } feet. 
       The river below flows like a tapestry of stories intertwined in a mosaic of time. The other side offers no clear path, only the transcendent quiet of the forest.`,
-      choices: [{ text: "End of the journey", nextSlideId: null }],
+      choices: [{ text: "End of the journey", nextSlideId: "end" }],
     },
     {
       id: "stayByRiver",
       text: `${name} decides to stay by the river, listening to the kaleidoscopic sounds of nature. 
       The verdant landscape around seems to whisper tales of old. The flow of water and the melody of birds create a captivating, timeless moment.`,
-      choices: [{ text: "End of the journey", nextSlideId: null }],
+      choices: [{ text: "End of the journey", nextSlideId: "end" }],
     },
     {
       id: "mysteriousGlade",
@@ -255,8 +256,13 @@ export const getSlides = (name, gender) => {
         gender === "male" ? "he" : "she"
       } realizes this is the end of the journey... for now.`,
       choices: [
-        { text: "End of the journey", nextSlideId: null }, // No further slides
+        { text: "End of the journey", nextSlideId: "end" }, // No further slides
       ],
+    },
+    {
+      id: "end",
+      text: "The journey has come to an end.",
+      choices: [], // No choices for the end slide.
     },
   ];
 };

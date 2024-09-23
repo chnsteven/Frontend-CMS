@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getSlides } from "../utils/constants";
-
+import AudioPlayer from "./AudioPlayer";
 const VisualNovel = () => {
   const [currentSlideId, setCurrentSlideId] = useState("");
   const [choice, setChoice] = useState({
@@ -50,8 +50,10 @@ const VisualNovel = () => {
       {/* Top Buttons */}
       <div className="visual-novel-top-ui">
         <button onClick={() => setShowProfilePopup(true)}>New</button>
-        <button>Play Background Music</button>
-        <button>Pause Background Music</button>
+        <AudioPlayer
+          audioPath={"/projects/java-application/Scene of a Street Corner.wav"}
+          audioType={"audio/wav"}
+        />
         <button onClick={() => setShowProfile(!showProfile)}>Profile</button>
       </div>
       {userProfile && showProfile && (
@@ -73,7 +75,17 @@ const VisualNovel = () => {
 
       {/* Content and Choices */}
       <div className="visual-novel-choices">
-        <p>{currentSlide.text}</p>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: userProfile
+              ? currentSlide.text.replace(
+                  userProfile.name,
+                  `<strong>${userProfile.name}</strong>`
+                )
+              : currentSlide.text,
+          }}
+        ></p>
+
         {currentSlide.choices.length > 0 && (
           <select
             value={choice.nextSlideId || ""}
@@ -102,7 +114,12 @@ const VisualNovel = () => {
         >
           Previous
         </button>
-        <button onClick={() => goToSlide(choice.nextSlideId)}>Next</button>
+        <button
+          onClick={() => goToSlide(choice.nextSlideId)}
+          disabled={!choice}
+        >
+          Next
+        </button>
       </div>
 
       {/* Profile Popup */}

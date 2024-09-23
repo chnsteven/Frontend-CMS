@@ -15,6 +15,12 @@ body {
   font-family: cursive;
 }
 
+button,
+select,
+option {
+  font-family: cursive;
+}
+
 a {
   text-decoration: none;
 }
@@ -362,6 +368,7 @@ td {
   width: 800px;
   height: 600px;
   border: 3px solid #000;
+  background-color: dimgrey;
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -372,6 +379,9 @@ td {
   flex: 2;
   padding: 15px;
   background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .visual-novel-top-ui {
