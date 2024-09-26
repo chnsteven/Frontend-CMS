@@ -1,4 +1,5 @@
 import Home from "../pages/Home";
+import MessageBoard from "../pages/MessageBoard";
 import About from "../pages/About";
 import Cosmania from "../pages/Cosmania";
 import InsightUBC from "../pages/InsightUBC";
@@ -10,6 +11,11 @@ import Verloren from "../pages/Verloren";
 
 export const menus = [
   { title: "Home", path: "/", component: <Home /> },
+  {
+    title: "Message Board",
+    path: "/message-board",
+    component: <MessageBoard />,
+  },
   { title: "About", path: "/about", component: <About /> },
   {
     title: "Projects",

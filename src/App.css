@@ -432,3 +432,10 @@ td {
   font-size: 0.8em;
   font-weight: bold;
 }
+
+/* new comment */
+.new-comment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
