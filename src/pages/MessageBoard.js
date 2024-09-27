@@ -4,14 +4,16 @@ import axios from "axios";
 function MessageBoard() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({
-    anonymous: null,
-    nickname: null,
-    content: null,
+    anonymous: false,
+    nickname: "",
+    content: "",
   });
 
   const loadComments = async () => {
     try {
-      const res = await axios.get("");
+      const res = await axios.get(
+        "http://localhost:3000/PHP-CMS/public/api/get_comments.php"
+      );
       setComments(res.data);
     } catch (e) {
       console.error("There was an error fetching comments!", e);
@@ -26,23 +28,39 @@ function MessageBoard() {
     e.preventDefault();
 
     try {
-      await axios.post("", newComment);
-      setNewComment({ anonymous: null, nickname: null, content: null });
+      await axios.post(
+        "http://localhost:3000/PHP-CMS/public/api/submit_comment.php",
+        newComment,
+        { headers: { "Content-Type": "application/json" } }
+      );
+      setNewComment({
+        anonymous: false,
+        nickname: "",
+        content: "",
+      });
       loadComments();
     } catch (e) {
       console.error("There was an error submitting the comment!", e);
     }
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewComment((prev) => ({
+      ...prev,
+      [name]: name === "anonymous" ? e.target.checked : value, // Handle the checkbox differently
+    }));
+  };
+
   return (
     <div className="main-container">
       <div>
         <h2>New Comment</h2>
-        <form onSubmit={handleSubmit} className="new-comment">
-          <label for="is-anonymous">Anonymous? </label>
+        <form onSubmit={handleSubmit} className="new-comment" method="post">
+          <label for="anonymous">Anonymous? </label>
           <input
             type="radio"
-            name="is-anonymous"
+            name="anonymous"
             checked={newComment.anonymous ? newComment.anonymous : false}
             onClick={() =>
               setNewComment({
@@ -50,12 +68,19 @@ function MessageBoard() {
                 anonymous: !newComment.anonymous,
               })
             }
+            onChange={handleInputChange}
           ></input>
           <label for="nickname">Nickname: </label>
-          <input type="text" name="nickname" />
+          <input type="text" name="nickname" onChange={handleInputChange} />
 
-          <label for="comment">Comment: </label>
-          <textarea type="textarea" name="comment" rows={5} cols={60} />
+          <label for="content">Comment: </label>
+          <textarea
+            type="textarea"
+            name="content"
+            rows={5}
+            cols={60}
+            onChange={handleInputChange}
+          />
 
           <button>Submit Comment</button>
         </form>
@@ -65,7 +90,8 @@ function MessageBoard() {
         <ul>
           {comments.map((comment, index) => (
             <li key={`comment-${index}`}>
-              {comment.anonymous ? "Anonymous" : comment.nickname}
+              {comment.anonymous} <br />
+              {comment.nickname} <br />
               {comment.content}
             </li>
           ))}
