@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 
 function MessageBoard() {
   const [comments, setComments] = useState([]);
@@ -9,26 +11,16 @@ function MessageBoard() {
     nickname: "",
     content: "",
   });
+  const [editComment, setEditComment] = useState(null); // Track which comment is being edited
   const [nicknameError, setNicknameError] = useState("");
   const [contentError, setContentError] = useState("");
 
-  const nicknameIsValid = (name) => {
-    const regex = /[a-zA-Z]/;
-    return regex.test(name);
-  };
-
-  const contentIsValid = (content) => {
-    return content.trim().length > 0; // Content must not be empty
-  };
   const loadComments = async () => {
     try {
       const res = await axios.get(
         "http://localhost:3000/public/api/get_comments.php",
         { params: { uuid: localStorage.getItem("uuid") || "" } }
       );
-      console.log(res.data);
-
-      // Make sure we access the comments array inside res.data
       if (res.data && res.data.comments) {
         setComments(res.data.comments);
       }
@@ -41,25 +33,24 @@ function MessageBoard() {
     loadComments();
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handlePost = async (e) => {
     e.preventDefault();
 
-    // Reset error messages
     setNicknameError("");
     setContentError("");
 
     let isValid = true;
 
-    if (!nicknameIsValid(newComment.nickname)) {
+    if (!/[a-zA-Z]/.test(newComment.nickname)) {
       setNicknameError(
         "Nickname is invalid. Please use at least one English character."
       );
-      isValid = false; // Mark as invalid
+      isValid = false;
     }
 
-    if (!contentIsValid(newComment.content)) {
+    if (!newComment.content.trim()) {
       setContentError("Content cannot be empty.");
-      isValid = false; // Mark as invalid
+      isValid = false;
     }
 
     if (isValid) {
@@ -68,7 +59,6 @@ function MessageBoard() {
           "http://localhost:3000/public/api/submit_comment.php",
           newComment,
           {
-            headers: { "Content-Type": "application/json" },
             params: { uuid: newComment.uuid },
           }
         );
@@ -86,19 +76,56 @@ function MessageBoard() {
     }
   };
 
+  const handlePatch = async (updatedComment) => {
+    try {
+      const res = await axios.patch(
+        `http://localhost:3000/public/api/update_comment.php`,
+        updatedComment
+      );
+      console.log("Response:", res.data);
+      loadComments();
+    } catch (e) {
+      console.error("There was an error updating the comment!", e);
+    }
+  };
+
   const handleInputChange = (e) => {
-    const { name, value } = e.target; // Use name to identify the field
+    const { name, value } = e.target;
     setNewComment((prev) => ({
       ...prev,
-      [name]: name === "anonymous" ? e.target.checked : value, // Handle the checkbox differently
+      [name]: name === "anonymous" ? e.target.checked : value,
     }));
+  };
+
+  const handleEditClick = (commentId) => {
+    setEditComment(commentId); // Set the comment ID being edited
+  };
+
+  const handleSaveEdit = (comment) => {
+    const updatedValues = {
+      id: comment.id,
+      nickname: comment.nickname,
+      content: comment.content,
+    };
+    handlePatch(updatedValues);
+    setEditComment(null); // Stop editing after save
+  };
+
+  const handleEditFieldChange = (e, commentId, field) => {
+    setComments((prevComments) =>
+      prevComments.map((comment) =>
+        comment.id === commentId
+          ? { ...comment, [field]: e.target.value }
+          : comment
+      )
+    );
   };
 
   return (
     <div className="main-container">
       <div>
         <h2>New Comment</h2>
-        <form onSubmit={handleSubmit} className="new-comment" method="post">
+        <form onSubmit={handlePost} className="new-comment" method="post">
           <label htmlFor="anonymous">Anonymous? </label>
           <input
             type="radio"
@@ -123,7 +150,6 @@ function MessageBoard() {
           {nicknameError && (
             <p className="comment-field-error">{nicknameError}</p>
           )}
-          {/* Display the error message */}
           <label htmlFor="content">Comment: </label>
           <textarea
             type="textarea"
@@ -140,27 +166,58 @@ function MessageBoard() {
           <button>Submit Comment</button>
         </form>
       </div>
+
       <div className="comment-history">
         <h2>Comment History</h2>
         <ul>
-          {comments &&
-            comments.map((comment, index) => (
-              <li key={`comment-${index}`}>
-                <p
-                  style={
-                    comment.nickname === "?????"
-                      ? { filter: "blur(5px)" }
-                      : null
-                  }
-                >
-                  {comment.nickname}
-                </p>
-                <p>{comment.content}</p>
-                {comment.is_user_comment && (
-                  <p>I am allowed to edit this comment</p>
+          {comments.map((comment, index) => (
+            <li key={`comment-${index}`}>
+              <div>
+                {/* Nickname field */}
+                {editComment === comment.id ? (
+                  <input
+                    id={`nickname-${comment.id}`} // Assign a unique ID
+                    value={comment.nickname}
+                    onChange={(e) =>
+                      handleEditFieldChange(e, comment.id, "nickname")
+                    }
+                  />
+                ) : (
+                  <p id={`nickname-${comment.id}`}>
+                    {comment.nickname}
+                    <button onClick={() => handleEditClick(comment.id)}>
+                      <FontAwesomeIcon icon={faPenToSquare} />
+                    </button>
+                  </p>
                 )}
-              </li>
-            ))}
+              </div>
+
+              <div>
+                {/* Content field */}
+                {editComment === comment.id ? (
+                  <textarea
+                    id={`content-${comment.id}`} // Assign a unique ID
+                    value={comment.content}
+                    onChange={(e) =>
+                      handleEditFieldChange(e, comment.id, "content")
+                    }
+                  />
+                ) : (
+                  <p id={`content-${comment.id}`}>
+                    {comment.content}
+                    <button onClick={() => handleEditClick(comment.id)}>
+                      <FontAwesomeIcon icon={faPenToSquare} />
+                    </button>
+                  </p>
+                )}
+              </div>
+
+              {/* Save button appears when editing */}
+              {editComment === comment.id && (
+                <button onClick={() => handleSaveEdit(comment)}>Save</button>
+              )}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
