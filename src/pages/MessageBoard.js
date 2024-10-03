@@ -1,17 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 
 function MessageBoard() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({
-    uuid: localStorage.getItem("uuid") || "",
     anonymous: false,
     nickname: "",
     content: "",
   });
-  const [editComment, setEditComment] = useState(null); // Track which comment is being edited
+  const [editComment, setEditComment] = useState({
+    id: null,
+    field: null,
+  }); // Track which comment is being edited
   const [nicknameError, setNicknameError] = useState("");
   const [contentError, setContentError] = useState("");
 
@@ -21,6 +23,7 @@ function MessageBoard() {
         "http://localhost:3000/public/api/get_comments.php",
         { params: { uuid: localStorage.getItem("uuid") || "" } }
       );
+      // console.log(res.data)
       if (res.data && res.data.comments) {
         setComments(res.data.comments);
       }
@@ -58,9 +61,7 @@ function MessageBoard() {
         await axios.post(
           "http://localhost:3000/public/api/submit_comment.php",
           newComment,
-          {
-            params: { uuid: newComment.uuid },
-          }
+          { params: { uuid: localStorage.getItem("uuid") || "" } }
         );
 
         setNewComment({
@@ -76,13 +77,18 @@ function MessageBoard() {
     }
   };
 
-  const handlePatch = async (updatedComment) => {
+  const handlePatch = async (updatedComment, id) => {
     try {
-      const res = await axios.patch(
+      await axios.patch(
         `http://localhost:3000/public/api/update_comment.php`,
-        updatedComment
+        updatedComment,
+        { params: { id: id } }
       );
-      console.log("Response:", res.data);
+      // const res = await axios.patch(
+      //   `http://localhost:3000/public/api/update_comment.php`,
+      //   updatedComment
+      // );
+      // console.log("Response:", res.data);
       loadComments();
     } catch (e) {
       console.error("There was an error updating the comment!", e);
@@ -97,20 +103,22 @@ function MessageBoard() {
     }));
   };
 
-  const handleEditClick = (commentId) => {
-    setEditComment(commentId); // Set the comment ID being edited
+  const handleEditClick = (commentId, fieldName) => {
+    setEditComment({ id: commentId, field: fieldName }); // Set the comment ID being edited
   };
 
   const handleSaveEdit = (comment) => {
     const updatedValues = {
-      id: comment.id,
       nickname: comment.nickname,
       content: comment.content,
     };
-    handlePatch(updatedValues);
-    setEditComment(null); // Stop editing after save
+    handlePatch(updatedValues, comment.id);
+    setEditComment({ id: null, field: null }); // Stop editing after save
   };
 
+  const handleCancelEdit = () => {
+    setEditComment({ id: null, field: null });
+  };
   const handleEditFieldChange = (e, commentId, field) => {
     setComments((prevComments) =>
       prevComments.map((comment) =>
@@ -121,6 +129,19 @@ function MessageBoard() {
     );
   };
 
+  const handleDeleteComment = async (comment) => {
+    console.log("comment:", comment);
+    try {
+      const res = await axios.delete(
+        "http://localhost:3000/public/api/delete_comment.php",
+        { params: { id: comment.id } }
+      );
+      loadComments();
+      console.log(res.data);
+    } catch (e) {
+      console.error("There was an error deleting the comment!", e);
+    }
+  };
   return (
     <div className="main-container">
       <div>
@@ -174,18 +195,60 @@ function MessageBoard() {
             <li key={`comment-${index}`}>
               <div>
                 {/* Nickname field */}
-                {editComment === comment.id ? (
-                  <input
-                    id={`nickname-${comment.id}`} // Assign a unique ID
-                    value={comment.nickname}
-                    onChange={(e) =>
-                      handleEditFieldChange(e, comment.id, "nickname")
-                    }
-                  />
+                {editComment.id === comment.id &&
+                editComment.field === "nickname" ? (
+                  <div>
+                    <input
+                      id={`nickname-${comment.id}`} // Assign a unique ID
+                      value={comment.nickname}
+                      onChange={(e) =>
+                        handleEditFieldChange(e, comment.id, "nickname")
+                      }
+                    />
+                    <button onClick={() => handleSaveEdit(comment)}>
+                      Save
+                    </button>
+                    <button onClick={() => handleCancelEdit()}>Cancel</button>
+                  </div>
                 ) : (
-                  <p id={`nickname-${comment.id}`}>
+                  <p
+                    id={`nickname-${comment.id}`}
+                    style={comment.anonymous ? { filter: "blur(4px)" } : {}}
+                  >
                     {comment.nickname}
-                    <button onClick={() => handleEditClick(comment.id)}>
+                    <button
+                      onClick={() => handleEditClick(comment.id, "nickname")}
+                    >
+                      <FontAwesomeIcon icon={faPenToSquare} />
+                    </button>
+                  </p>
+                )}
+              </div>
+
+              <div>
+                {/* Anonymous field */}
+                {editComment.id === comment.id &&
+                editComment.field === "anonymous" ? (
+                  <div>
+                    <input
+                      type="radio"
+                      id={`anonymous-${comment.id}`} // Assign a unique ID
+                      value={comment.anonymous}
+                      onChange={(e) =>
+                        handleEditFieldChange(e, comment.id, "anonymous")
+                      }
+                    />
+                    <button onClick={() => handleSaveEdit(comment)}>
+                      Save
+                    </button>
+                    <button onClick={() => handleCancelEdit()}>Cancel</button>
+                  </div>
+                ) : (
+                  <p id={`anonymous-${comment.id}`}>
+                    {comment.anonymous}
+                    <button
+                      onClick={() => handleEditClick(comment.id, "anonymous")}
+                    >
                       <FontAwesomeIcon icon={faPenToSquare} />
                     </button>
                   </p>
@@ -194,28 +257,39 @@ function MessageBoard() {
 
               <div>
                 {/* Content field */}
-                {editComment === comment.id ? (
-                  <textarea
-                    id={`content-${comment.id}`} // Assign a unique ID
-                    value={comment.content}
-                    onChange={(e) =>
-                      handleEditFieldChange(e, comment.id, "content")
-                    }
-                  />
+                {editComment.id === comment.id &&
+                editComment.field === "content" ? (
+                  <div>
+                    <textarea
+                      id={`content-${comment.id}`} // Assign a unique ID
+                      value={comment.content}
+                      onChange={(e) =>
+                        handleEditFieldChange(e, comment.id, "content")
+                      }
+                    />
+                    {/* Save button appears when editing */}
+                    <button onClick={() => handleSaveEdit(comment)}>
+                      Save
+                    </button>
+                    <button onClick={() => handleCancelEdit()}>Cancel</button>
+                  </div>
                 ) : (
                   <p id={`content-${comment.id}`}>
                     {comment.content}
-                    <button onClick={() => handleEditClick(comment.id)}>
+                    <button
+                      onClick={() => handleEditClick(comment.id, "content")}
+                    >
                       <FontAwesomeIcon icon={faPenToSquare} />
                     </button>
                   </p>
                 )}
               </div>
-
-              {/* Save button appears when editing */}
-              {editComment === comment.id && (
-                <button onClick={() => handleSaveEdit(comment)}>Save</button>
-              )}
+              <div>
+                <button onClick={() => handleDeleteComment(comment)}>
+                  Delete
+                  <FontAwesomeIcon icon={faTrashCan} />
+                </button>
+              </div>
             </li>
           ))}
         </ul>
