@@ -3,6 +3,8 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 
+// const commentHistoryLimit = 3;
+
 function MessageBoard() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({
@@ -21,9 +23,14 @@ function MessageBoard() {
     try {
       const res = await axios.get(
         "http://localhost:3000/public/api/get_comments.php",
-        { params: { uuid: localStorage.getItem("uuid") || "" } }
+        {
+          params: {
+            uuid: localStorage.getItem("uuid") || "",
+            // limit: commentHistoryLimit,
+          },
+        }
       );
-      // console.log(res.data)
+      // console.log(res.data);
       if (res.data && res.data.comments) {
         setComments(res.data.comments);
       }
@@ -84,11 +91,6 @@ function MessageBoard() {
         updatedComment,
         { params: { id: id } }
       );
-      // const res = await axios.patch(
-      //   `http://localhost:3000/public/api/update_comment.php`,
-      //   updatedComment
-      // );
-      // console.log("Response:", res.data);
       loadComments();
     } catch (e) {
       console.error("There was an error updating the comment!", e);
@@ -137,7 +139,7 @@ function MessageBoard() {
         { params: { id: comment.id } }
       );
       loadComments();
-      console.log(res.data);
+      // console.log(res.data);
     } catch (e) {
       console.error("There was an error deleting the comment!", e);
     }
@@ -151,6 +153,7 @@ function MessageBoard() {
           <input
             type="radio"
             name="anonymous"
+            id="anonymous"
             checked={newComment.anonymous}
             onClick={() =>
               setNewComment((prev) => ({
@@ -164,6 +167,7 @@ function MessageBoard() {
           <input
             type="text"
             name="nickname"
+            id="nickname"
             onChange={handleInputChange}
             value={newComment.nickname}
             placeholder="At least 1 English character"
@@ -175,6 +179,7 @@ function MessageBoard() {
           <textarea
             type="textarea"
             name="content"
+            id="content"
             rows={5}
             cols={60}
             onChange={handleInputChange}
@@ -211,17 +216,21 @@ function MessageBoard() {
                     <button onClick={() => handleCancelEdit()}>Cancel</button>
                   </div>
                 ) : (
-                  <p
-                    id={`nickname-${comment.id}`}
-                    style={comment.anonymous ? { filter: "blur(4px)" } : {}}
-                  >
-                    {comment.nickname}
-                    <button
-                      onClick={() => handleEditClick(comment.id, "nickname")}
+                  <div>
+                    <span
+                      id={`nickname-${comment.id}`}
+                      style={comment.anonymous ? { filter: "blur(4px)" } : {}}
                     >
-                      <FontAwesomeIcon icon={faPenToSquare} />
-                    </button>
-                  </p>
+                      {comment.nickname}
+                    </span>
+                    {comment.is_user_comment && (
+                      <button
+                        onClick={() => handleEditClick(comment.id, "nickname")}
+                      >
+                        <FontAwesomeIcon icon={faPenToSquare} />
+                      </button>
+                    )}
+                  </div>
                 )}
               </div>
 
@@ -244,14 +253,18 @@ function MessageBoard() {
                     <button onClick={() => handleCancelEdit()}>Cancel</button>
                   </div>
                 ) : (
-                  <p id={`anonymous-${comment.id}`}>
-                    {comment.anonymous}
-                    <button
-                      onClick={() => handleEditClick(comment.id, "anonymous")}
-                    >
-                      <FontAwesomeIcon icon={faPenToSquare} />
-                    </button>
-                  </p>
+                  <div>
+                    <span id={`anonymous-${comment.id}`}>
+                      {comment.anonymous}
+                    </span>
+                    {comment.is_user_comment && (
+                      <button
+                        onClick={() => handleEditClick(comment.id, "anonymous")}
+                      >
+                        <FontAwesomeIcon icon={faPenToSquare} />
+                      </button>
+                    )}
+                  </div>
                 )}
               </div>
 
@@ -274,22 +287,26 @@ function MessageBoard() {
                     <button onClick={() => handleCancelEdit()}>Cancel</button>
                   </div>
                 ) : (
-                  <p id={`content-${comment.id}`}>
-                    {comment.content}
-                    <button
-                      onClick={() => handleEditClick(comment.id, "content")}
-                    >
-                      <FontAwesomeIcon icon={faPenToSquare} />
-                    </button>
-                  </p>
+                  <div>
+                    <span id={`content-${comment.id}`}>{comment.content}</span>
+                    {comment.is_user_comment && (
+                      <button
+                        onClick={() => handleEditClick(comment.id, "content")}
+                      >
+                        <FontAwesomeIcon icon={faPenToSquare} />
+                      </button>
+                    )}
+                  </div>
                 )}
               </div>
-              <div>
-                <button onClick={() => handleDeleteComment(comment)}>
-                  Delete
-                  <FontAwesomeIcon icon={faTrashCan} />
-                </button>
-              </div>
+              {comment.is_user_comment && (
+                <div>
+                  <button onClick={() => handleDeleteComment(comment)}>
+                    Delete
+                    <FontAwesomeIcon icon={faTrashCan} />
+                  </button>
+                </div>
+              )}
             </li>
           ))}
         </ul>

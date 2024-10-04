@@ -44,7 +44,7 @@ function AudioPlayer({ audioPath, audioType }) {
   return (
     <div>
       {/* Audio element */}
-      <audio ref={audioRef} loops>
+      <audio ref={audioRef} loops="true">
         <source src={`${audioPath}`} type={`${audioType}`} />
         Your browser does not support the audio element.
       </audio>

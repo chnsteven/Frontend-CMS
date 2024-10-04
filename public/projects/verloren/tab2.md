@@ -44,6 +44,6 @@
 - In addition to the witch, there's a pile of spiders that protects the witch.
 - Defeat the witch to escape from the forest!
 
-| ![Fire Pillar](/projects/verloren/feature/feature%20boss%20fight%201.png) | ![Fire Rains](/projects/verloren/feature/feature%20boss%20fight%202.png) | ![Clear Stage](/projects/verloren/feature/feature%20boss%20fight%201.png) |
-| :-----------------------------------------------------------------------: | :----------------------------------------------------------------------: | :-----------------------------------------------------------------------: |
-|                               _Fire Pillar_                               |                               _Fire Rains_                               |                               _Clear Stage_                               |
+| ![Fire Pillar](/projects/verloren/feature/feature%20boss%20fight%201.png) | ![Fire Rains](/projects/verloren/feature/feature%20boss%20fight%202.png) |
+| :-----------------------------------------------------------------------: | :----------------------------------------------------------------------: |
+|                               _Fire Pillar_                               |                               _Fire Rains_                               |
