@@ -242,13 +242,14 @@ function QueryEngine() {
         {data.length === 0 ? (
           <p>No results found. Please adjust your filters.</p>
         ) : (
-          <table>
+          <table className="result-container-table">
             <thead>
               <tr>
                 {fields.map((field, index) => (
                   <th
                     key={`th-icon-${field}-${index}`}
                     onClick={() => handleVisibility(field)}
+                    className="result-container-table"
                   >
                     <FontAwesomeIcon icon={getVisibilityIcon(field)} />
                   </th>
@@ -271,9 +272,19 @@ function QueryEngine() {
                 <tr key={`row-${rowIndex}`}>
                   {Object.entries(course).map(([key, value], colIndex) => {
                     return visibilityConfig[colIndex].visible ? (
-                      <td key={`${key}-${rowIndex}`}>{value}</td>
+                      <td
+                        key={`${key}-${rowIndex}`}
+                        className="result-container-table"
+                      >
+                        {value}
+                      </td>
                     ) : (
-                      <td key={`${key}-${rowIndex}`}>&nbsp;</td>
+                      <td
+                        key={`${key}-${rowIndex}`}
+                        className="result-container-table"
+                      >
+                        &nbsp;
+                      </td>
                     );
                   })}
                 </tr>

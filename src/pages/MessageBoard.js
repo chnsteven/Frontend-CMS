@@ -134,7 +134,7 @@ function MessageBoard() {
   const handleDeleteComment = async (comment) => {
     console.log("comment:", comment);
     try {
-      const res = await axios.delete(
+      await axios.delete(
         "http://localhost:3000/public/api/delete_comment.php",
         { params: { id: comment.id } }
       );

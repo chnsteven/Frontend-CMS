@@ -10,19 +10,15 @@ const filePaths = {
 
 function Jankbot() {
   const [main, setMain] = useState("");
-  const [sections, setSections] = useState([]);
 
   useEffect(() => {
     let isMounted = true;
 
     const fetchAllMarkdown = async () => {
-      const { mainContent, sectionsContent } = await fetchMarkdownContent(
-        filePaths
-      );
+      const { mainContent } = await fetchMarkdownContent(filePaths);
 
       if (isMounted) {
         setMain(mainContent);
-        setSections(sectionsContent);
       }
     };
 
