@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBug, faFaceLaughBeam } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBug,
+  faFaceLaughBeam,
+  faShoePrints,
+} from "@fortawesome/free-solid-svg-icons";
 import { gsap } from "gsap";
 
 const roadmapSteps = [
@@ -77,7 +81,7 @@ const roadmapSteps = [
     title: "Query Engine: Aggregation",
     content: (
       <p>
-        Support aggregated queries like <strong>apply</strong> and <br />
+        Support aggregated queries like <strong>group by</strong> and <br />
         <strong>sorting</strong>
       </p>
     ),
@@ -111,6 +115,14 @@ const Roadmap = () => {
       ease: "power3.in",
       repeat: -1, // Repeat forever
     });
+
+    gsap.to("#footprint", {
+      x: 200,
+      duration: 1,
+      rotate: 90,
+      repeat: -1,
+      opacity: 0,
+    });
   }, []);
 
   useEffect(() => {
@@ -133,6 +145,9 @@ const Roadmap = () => {
   return (
     <div>
       <h2>Roadmap</h2>
+      <div>
+        <FontAwesomeIcon icon={faShoePrints} id="footprint" />{" "}
+      </div>
       <div className="roadmap-container">
         {grid.map((row, rowIndex) =>
           row.map((cell, colIndex) => (

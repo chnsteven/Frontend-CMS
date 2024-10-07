@@ -12,6 +12,7 @@ import {
   faSortDown,
   faToggleOn,
   faToggleOff,
+  faGears,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -173,7 +174,7 @@ function QueryEngine() {
             <legend>
               Search Filters <FontAwesomeIcon icon={faFilter} />
             </legend>
-            <div className="search-filter">
+            <div id="search-filter">
               {fields.map((field, index) => {
                 const filter = searchFilters[field] || {};
 
@@ -224,32 +225,68 @@ function QueryEngine() {
                 );
               })}
             </div>
-            <div className="search-filter-buttons">
-              <button onClick={handleApplyFilters}>Apply Filters</button>
-              <button onClick={handleResetFilters}>Reset Filters</button>
+            <div>
+              <button className="round-button" onClick={handleApplyFilters}>
+                Apply Filters
+              </button>
+              <button className="round-button" onClick={handleResetFilters}>
+                Reset Filters
+              </button>
             </div>
           </fieldset>
         </form>
       </div>
 
-      <div className="result-container">
-        <span>
+      <div id="result-container">
+        <div id="result-container-title">
           <h3>Search results</h3>
-          <button onClick={handleShowAllColumns}>Show All Columns</button>
-          <button onClick={handleShowNoColumns}>Show No Columns</button>
-          <button onClick={handleResetOrder}>Reset Order</button>
-        </span>
+          <fieldset>
+            <legend>
+              Options <FontAwesomeIcon icon={faGears} />
+            </legend>
+            <label htmlFor="show-all-columns" className="hidden">
+              Show All Columns
+            </label>
+            <input
+              id="show-all-columns"
+              className="round-button"
+              type="button"
+              onClick={handleShowAllColumns}
+              value="Show All Columns"
+            />
+            <label htmlFor="show-no-columns" className="hidden">
+              Show No Columns
+            </label>
+            <input
+              id="show-no-columns"
+              className="round-button"
+              type="button"
+              onClick={handleShowNoColumns}
+              value="Show No Columns"
+            />
+            <label htmlFor="reset-order" className="hidden">
+              Reset Order
+            </label>
+            <input
+              id="reset-order"
+              className="round-button"
+              type="button"
+              onClick={handleResetOrder}
+              value="Reset Order"
+            />
+          </fieldset>
+        </div>
+
         {data.length === 0 ? (
           <p>No results found. Please adjust your filters.</p>
         ) : (
-          <table className="result-container-table">
+          <table id="result-container-table">
             <thead>
               <tr>
                 {fields.map((field, index) => (
                   <th
                     key={`th-icon-${field}-${index}`}
                     onClick={() => handleVisibility(field)}
-                    className="result-container-table"
                   >
                     <FontAwesomeIcon icon={getVisibilityIcon(field)} />
                   </th>
@@ -261,7 +298,7 @@ function QueryEngine() {
                     key={`th-${field}-${index}`}
                     onClick={() => handleSort(field)}
                   >
-                    <p>{field.toUpperCase()}</p>
+                    <p className="field-name">{field.toUpperCase()}</p>
                     <FontAwesomeIcon icon={getSortIcon(field)} />
                   </th>
                 ))}
