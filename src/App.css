@@ -39,9 +39,64 @@ a {
   margin: 5px 10px;
 }
 
-.round-button:hover {
+button:hover {
   cursor: pointer;
   background-color: #e2c044;
+}
+
+.square-button {
+  font-family: cursive;
+  background-color: #2e5266;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  margin: 5px 10px;
+}
+
+.square-button:disabled {
+  background-color: #6e8898;
+}
+
+.left-arrow-button {
+  font-family: cursive;
+  background-color: #2e5266;
+  color: white;
+  clip-path: polygon(
+    40% 0%,
+    40% 20%,
+    100% 20%,
+    100% 80%,
+    40% 80%,
+    40% 100%,
+    0% 50%
+  );
+  padding: 0.7rem;
+  padding-left: 1rem;
+  margin: 5px 10px;
+}
+
+.right-arrow-button {
+  font-family: cursive;
+  background-color: #2e5266;
+  color: white;
+  clip-path: polygon(
+    0% 20%,
+    60% 20%,
+    60% 0%,
+    100% 50%,
+    60% 100%,
+    60% 80%,
+    0% 80%
+  );
+  padding: 0.7rem;
+  padding-right: 1rem;
+  margin: 5px 10px;
+}
+
+.left-arrow-button:disabled {
+  background-color: #6e8898;
+}
+.right-arrow-button:disabled {
+  background-color: #6e8898;
 }
 
 /* svg {
@@ -287,10 +342,6 @@ address > p:hover {
   font-style: normal;
 }
 
-.jank-bot-theme h1 {
-  font-weight: bolder;
-}
-
 .jank-bot-theme em {
   color: darkred;
   font-weight: lighter;
@@ -489,18 +540,19 @@ td {
 
 /* Visual Novel */
 .visual-novel-container {
-  width: 800px;
-  height: 600px;
+  max-height: 1000px;
+  max-width: 100%;
+  width: 100%;
   border: 3px solid #000;
   background-color: dimgrey;
   border-radius: 10px;
   overflow: hidden;
   display: flex;
+  align-items: stretch;
   flex-direction: column;
 }
 
 .visual-novel-choices {
-  flex: 2;
   padding: 15px;
   background-color: #f0f0f0;
   display: flex;
@@ -521,18 +573,32 @@ td {
 }
 
 .visual-novel-profile {
+  display: flex;
+  justify-content: center;
   background-color: blanchedalmond;
-  padding: 5px 0;
 }
 
-.visual-novel-profile span {
-  padding: 20px;
+.visual-novel-profile-item {
+  padding: 10px;
 }
 
 .visual-novel-background {
-  width: 100%; /* Stretch the image to full width */
-  height: 100%; /* Stretch the image to full height */
-  object-fit: fill; /* Maintain aspect ratio while covering the area */
+  width: auto; /* Full width of the container */
+  max-height: 600px; /* Ensure it doesn't exceed the container height */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Maintain aspect ratio and show the entire image */
+}
+
+#audio-player {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#audio-player-volume {
+  padding-left: 10px;
 }
 
 .popup {

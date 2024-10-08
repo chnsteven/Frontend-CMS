@@ -18,3 +18,10 @@ export const fetchMarkdownContent = async (filePaths) => {
 
   return { mainContent, sectionsContent };
 };
+
+export function formatString(str) {
+  return str
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+}

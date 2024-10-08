@@ -49,29 +49,42 @@ const VisualNovel = () => {
     <div className="visual-novel-container">
       {/* Top Buttons */}
       <div className="visual-novel-top-ui">
-        <button onClick={() => setShowProfilePopup(true)}>New</button>
+        <button
+          className="square-button"
+          onClick={() => setShowProfilePopup(true)}
+        >
+          New
+        </button>
         <AudioPlayer
           audioPath={"/projects/java-application/Scene of a Street Corner.wav"}
           audioType={"audio/wav"}
         />
-        <button onClick={() => setShowProfile(!showProfile)}>Profile</button>
+        <button
+          className="square-button"
+          onClick={() => setShowProfile(!showProfile)}
+        >
+          Profile
+        </button>
       </div>
       {userProfile && showProfile && (
         <span className="visual-novel-profile">
-          <span>Name: {userProfile.name}</span>
-          <span>Gender: {userProfile.gender}</span>
+          <span className="visual-novel-profile-item">
+            Name: {userProfile.name}
+          </span>
+          <span className="visual-novel-profile-item">
+            Gender: {userProfile.gender}
+          </span>
         </span>
       )}
 
       {/* Scene Image */}
-      <div
-        className="visual-novel-background"
-        style={{
-          backgroundImage: `url(/projects/java-application/${currentSlideId}.jpg)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      ></div>
+      {currentSlideId && (
+        <img
+          className="visual-novel-background"
+          src={`/projects/java-application/${currentSlideId}.jpg`}
+          alt="Scene Background"
+        />
+      )}
 
       {/* Content and Choices */}
       <div className="visual-novel-choices">
@@ -109,12 +122,14 @@ const VisualNovel = () => {
       {/* Bottom Buttons */}
       <div className="visual-novel-bot-ui">
         <button
+          className="left-arrow-button"
           onClick={() => goToSlide(choice.prevSlideId)}
           disabled={!choice.prevSlideId}
         >
           Previous
         </button>
         <button
+          className="right-arrow-button"
           onClick={() => goToSlide(choice.nextSlideId)}
           disabled={!choice}
         >

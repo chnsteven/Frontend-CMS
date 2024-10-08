@@ -42,7 +42,7 @@ function AudioPlayer({ audioPath, audioType }) {
   };
 
   return (
-    <div>
+    <div id="audio-player">
       {/* Audio element */}
       <audio ref={audioRef} loops="true">
         <source src={`${audioPath}`} type={`${audioType}`} />
@@ -50,28 +50,48 @@ function AudioPlayer({ audioPath, audioType }) {
       </audio>
 
       {/* Play Button */}
-      <button onClick={handlePlay} disabled={isPlaying}>
+      <button
+        className="square-button"
+        onClick={handlePlay}
+        disabled={isPlaying}
+      >
         Play
       </button>
       {/* Pause Button */}
-      <button onClick={handlePause} disabled={!isPlaying}>
+      <button
+        className="square-button"
+        onClick={handlePause}
+        disabled={!isPlaying}
+      >
         Pause
       </button>
 
       {/* Mute Button */}
-      <button onClick={handleMute} id="mute-button">
+      <button className="square-button" onClick={handleMute}>
         <FontAwesomeIcon icon={faVolumeXmark} />
       </button>
 
       {/* Volume Down Button */}
-      <button onClick={handleVolumeDec} disabled={volume === 0}>
+      <button
+        className="square-button"
+        onClick={handleVolumeDec}
+        disabled={volume === 0}
+      >
         <FontAwesomeIcon icon={faVolumeLow} />
       </button>
 
       {/* Volume Up Button */}
-      <button onClick={handleVolumeInc} disabled={volume === 1}>
+      <button
+        className="square-button"
+        onClick={handleVolumeInc}
+        disabled={volume === 1}
+      >
         <FontAwesomeIcon icon={faVolumeHigh} />
       </button>
+
+      <span id="audio-player-volume">
+        Volume: {isMuted ? "Muted" : Math.round(volume * 100)}
+      </span>
     </div>
   );
 }

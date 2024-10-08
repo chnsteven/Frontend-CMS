@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { menus } from "../utils/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretLeft } from "@fortawesome/free-solid-svg-icons";
+import { formatString } from "../utils/functions";
 
 function NavBar() {
   const location = useLocation();
@@ -70,7 +71,7 @@ function NavBar() {
                         location.pathname === subMenu.path ? "active" : ""
                       }
                     >
-                      {subMenu.title}
+                      {formatString(subMenu.title)}
                     </Link>
                   </li>
                 ))}
