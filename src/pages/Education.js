@@ -30,8 +30,9 @@ const components = {
             className="icon"
           />
           <ReactTooltip
+            className="tooltip"
             id={tooltipId}
-            place="right"
+            place="top"
             type="info"
             effect="solid"
           />

@@ -468,9 +468,13 @@ address > p:hover {
   gap: 10px;
 }
 
+.tooltip-container > div {
+  max-width: 60%;
+}
+
 /* Roadmap */
 :root {
-  --grid-rows: 4; /* Default grid size */
+  --grid-rows: 4;
   --grid-columns: 3;
 }
 
