@@ -147,6 +147,14 @@ function MessageBoard() {
   return (
     <div className="main-container">
       <div>
+        <h2 className="error-message">
+          Unfortunately, I realized there isn't a good way to host a free
+          database service. Nevertheless, I successfully created the message
+          board and its interactivities. If you like, you could the my server
+          side repository from GitHub to try out!
+        </h2>
+      </div>
+      <div>
         <h2>New Comment</h2>
         <form onSubmit={handlePost} className="new-comment" method="post">
           <label htmlFor="anonymous">Anonymous? </label>
@@ -189,7 +197,7 @@ function MessageBoard() {
           {contentError && (
             <p className="comment-field-error">{contentError}</p>
           )}
-          <button>Submit Comment</button>
+          <button className="round-button">Submit Comment</button>
         </form>
       </div>
 

@@ -12,18 +12,19 @@
 body {
   background-color: #9fb1bc; /* Cadet Gray */
   font-size: 16px;
-  font-family: cursive;
+  font-family: Comic Sans MS, Comic Sans, cursive;
 }
 
+h2,
 h3 {
-  font-size: 16px;
+  /* font-size: 16px; */
   font-weight: normal;
 }
 
 button,
 select,
 option {
-  font-family: cursive;
+  font-family: Comic Sans MS, Comic Sans, cursive;
 }
 
 a {
@@ -667,8 +668,8 @@ td {
 }
 
 .error-message {
-  color: rgba(255, 0, 0, 0.75);
-  font-size: 0.8em;
+  color: rgba(255, 0, 0, 0.5);
+  /* font-size: 0.8em; */
   font-weight: bold;
 }
 
