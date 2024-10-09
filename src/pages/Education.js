@@ -61,7 +61,7 @@ function Education() {
     };
   }, []);
   return (
-    <div className="tab-container">
+    <div className="main-container">
       <Markdown
         className="education-style"
         remarkPlugins={[remarkGfm]}

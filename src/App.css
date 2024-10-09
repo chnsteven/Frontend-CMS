@@ -30,6 +30,9 @@ a {
   text-decoration: none;
 }
 
+textarea {
+  max-width: 100%;
+}
 .round-button {
   font-family: cursive;
   border-radius: 10% / 50%;
@@ -328,6 +331,24 @@ address > p:hover {
   padding: 60px 40px 0 40px;
 }
 
+@media screen and (max-width: 1150px) {
+  .main-container {
+    padding: 240px 40px 0 40px;
+  }
+}
+
+@media screen and (max-width: 854px) {
+  .main-container {
+    padding: 200px 40px 0 40px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .main-container {
+    padding: 160px 40px 0 40px;
+  }
+}
+
 .tab-container {
   align-items: flex-start;
   flex-direction: column;
@@ -350,15 +371,14 @@ address > p:hover {
 /* nav-bar */
 
 .nav-bar-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   background-color: #2e5266; /* Charcoal */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  height: 60px; /* nav bar height */
-  align-items: center;
 }
 
 .nav-bar-container a {
@@ -402,6 +422,31 @@ address > p:hover {
 .nav-sub-menu > li {
   text-align: left;
   padding: 2px 20px;
+}
+
+@media screen and (max-width: 1150px) {
+  .nav-bar-container {
+    justify-content: center;
+    align-items: normal;
+  }
+  .nav-bar {
+    flex-direction: column;
+    padding: 0;
+    gap: 5px;
+    align-items: center;
+  }
+  .nav-sub-menu {
+    align-items: center;
+    position: relative;
+    top: 0%;
+  }
+  .nav-bar > li {
+    width: 100%;
+  }
+  .nav-sub-menu > li {
+    text-align: center;
+    padding: 5px 0;
+  }
 }
 
 /* icon */

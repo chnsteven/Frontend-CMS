@@ -28,7 +28,7 @@ function About() {
     };
   }, []);
   return (
-    <div className="tab-container">
+    <div className="main-container">
       <Markdown remarkPlugins={[remarkGfm]}>{main}</Markdown>
     </div>
   );
