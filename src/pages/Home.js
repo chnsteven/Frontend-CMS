@@ -28,9 +28,18 @@ function Home() {
       isMounted = false;
     };
   }, []);
+
+  const components = {
+    img: ({ src, alt }) => <img id="img-float" src={src} alt={alt} />,
+  };
+
   return (
     <div className="main-container">
-      <Markdown className="education-style" remarkPlugins={[remarkGfm]}>
+      <Markdown
+        className="education-style"
+        remarkPlugins={[remarkGfm]}
+        components={components}
+      >
         {main}
       </Markdown>
     </div>

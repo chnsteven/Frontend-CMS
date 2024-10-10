@@ -1,3 +1,5 @@
+![Steven Chen Photo](/home/photo.jpg)
+
 # Welcome to My Porfolio !!!
 
 ## This is a static page that I created to showcase my skills and knowledges.
@@ -7,5 +9,3 @@
 ## I integrated **Response Web Design** when I developed this project. Please try it on different devices, screen sizes to experiment!
 
 ## I hope this project can help you learn more about my capabilities. Thank you!
-
-![Steven Chen Photo](/home/photo.jpg)

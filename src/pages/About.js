@@ -27,9 +27,21 @@ function About() {
       isMounted = false;
     };
   }, []);
+
+  const components = {
+    em: ({ children }) => (
+      <video width="480" height="270" controls muted={true}>
+        <source src={children} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    ),
+  };
+
   return (
     <div className="main-container">
-      <Markdown remarkPlugins={[remarkGfm]}>{main}</Markdown>
+      <Markdown remarkPlugins={[remarkGfm]} components={components}>
+        {main}
+      </Markdown>
     </div>
   );
 }
