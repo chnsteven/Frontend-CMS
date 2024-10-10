@@ -14,7 +14,7 @@ function NavBar() {
     if (location.pathname !== "/" && location.pathname.endsWith("/")) {
       const newPath = location.pathname.slice(0, -1);
       console.log("Redirecting to " + newPath);
-      navigate(newPath, { replace: true }); // Use navigate for redirection
+      navigate(newPath, { replace: true });
     }
   }, [location, navigate]);
 

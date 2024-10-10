@@ -54,6 +54,8 @@ button:hover {
   color: white;
   padding: 0.2rem 0.5rem;
   margin: 5px 10px;
+  min-width: 40px;
+  height: auto;
 }
 
 .square-button:disabled {
