@@ -1,12 +1,12 @@
 #### 2. User Interface (UI) Elements
 
-- **Gameplay UI & Interactions**: Capture the UI in action during gameplay, such as chat bubbles, popups, inventory management, and warnings. This can also include tutorials or guides displayed during gameplay.
+- **Gameplay UI & Interactions**: This is the UI in action during gameplay, such as chat bubbles, popups, inventory management, and warnings. The UI also include tutorials or guides displayed during gameplay.
 
 |                               _Gameplay Investigate_                                |                               _Main Menu_                                |
 | :---------------------------------------------------------------------------------: | :----------------------------------------------------------------------: |
 | ![GIF Gameplay Investigate](/projects/cosmania/gameplay/gameplay%20investigate.gif) | ![GIF Main Menu](/projects/cosmania/gameplay/gameplay%20main%20menu.gif) |
 
-- **UI Events & Feedback**: Demonstrate how the UI reacts to different game states or player actions, using popups, chat bubbles, or warnings as examples.
+- **UI Events & Feedback**: Here are the different types of menus. The UI reacts to different game states or player actions.
 
 |                   _Exit Menu_                    |                       _Game Over Menu_                       |
 | :----------------------------------------------: | :----------------------------------------------------------: |

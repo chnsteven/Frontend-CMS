@@ -1,10 +1,6 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBug,
-  faFaceLaughBeam,
-  faShoePrints,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBug, faFaceLaughBeam } from "@fortawesome/free-solid-svg-icons";
 import { gsap } from "gsap";
 
 const roadmapSteps = [
@@ -145,9 +141,6 @@ const Roadmap = () => {
   return (
     <div>
       <h2>Roadmap</h2>
-      {/* <div>
-        <FontAwesomeIcon icon={faShoePrints} id="footprint" />{" "}
-      </div> */}
       <div className="roadmap-container">
         {grid.map((row, rowIndex) =>
           row.map((cell, colIndex) => (

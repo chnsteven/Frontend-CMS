@@ -1,6 +1,6 @@
 #### 1. Core Game Mechanics
 
-- **Interactable & Collectable GameObjects**: Demonstrate how players interact with and collect objects in the game. Highlight the interfaces and serializable structs used to manage these objects.
+- **Interactable & Collectable GameObjects**: This is how players interact with and collect objects in the game. I managed these obejct with serializable structs.
 
 |                      _Interact with cannon_                      |                     _Interact with couch_                      |
 | :--------------------------------------------------------------: | :------------------------------------------------------------: |
@@ -10,7 +10,7 @@
 | :----------------------------------------------------------: | :----------------------------------------------------------------------: |
 | ![GIF Door](/projects/cosmania/interact/interact%20door.gif) | ![GIF Streetlamp](/projects/cosmania/interact/interact%20streetlamp.gif) |
 
-- **Character Controllers & Cameras**: Show transitions between third-person, first-person, and stationary cameras, as well as character movement. This can include how the player character and NPCs interact within the environment.
+- **Character Controllers & Cameras**: These are the transitions between third-person, first-person, and stationary cameras, as well as character movement. The camera switches depending on how the player character and NPCs interact within the environment.
 
 |                           _First person camera_                            |                         _Stationary camera_                          |
 | :------------------------------------------------------------------------: | :------------------------------------------------------------------: |
