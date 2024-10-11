@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { fetchMarkdownContent } from "../utils/functions";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { components } from "react-select";
 
 const filePaths = {
   main: "jank-bot.md",
