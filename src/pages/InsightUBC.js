@@ -29,9 +29,20 @@ function InsightUBC() {
       isMounted = false;
     };
   }, []);
+
+  const components = {
+    a: ({ href, alt, children }) => (
+      <a href={href} alt={alt} target="_blank" rel="noreferrer">
+        {children}
+      </a>
+    ),
+  };
+
   return (
     <div className="main-container">
-      <Markdown remarkPlugins={[remarkGfm]}>{main}</Markdown>
+      <Markdown remarkPlugins={[remarkGfm]} components={components}>
+        {main}
+      </Markdown>
       <Roadmap />
       <QueryEngine />
     </div>

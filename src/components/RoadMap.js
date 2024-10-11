@@ -145,9 +145,9 @@ const Roadmap = () => {
   return (
     <div>
       <h2>Roadmap</h2>
-      <div>
+      {/* <div>
         <FontAwesomeIcon icon={faShoePrints} id="footprint" />{" "}
-      </div>
+      </div> */}
       <div className="roadmap-container">
         {grid.map((row, rowIndex) =>
           row.map((cell, colIndex) => (

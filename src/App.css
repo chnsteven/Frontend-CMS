@@ -361,6 +361,7 @@ address > p:hover {
 .jank-bot-theme {
   font-family: "VT323", monospace;
   font-style: normal;
+  font-size: 18px;
 }
 
 .jank-bot-theme em {
@@ -503,6 +504,10 @@ address > p:hover {
 }
 
 /* Query Engine */
+.toggle-button {
+  padding: 10px;
+}
+
 .code-block {
   height: 300px;
   overflow-y: scroll;

@@ -62,6 +62,11 @@ const Cosmania = () => {
     tr: ({ children }) => <tr className="tab-tr">{children}</tr>,
     th: ({ children }) => <th className="tab-th">{children}</th>,
     td: ({ children }) => <td className="tab-td">{children}</td>,
+    a: ({ href, alt, children }) => (
+      <a href={href} alt={alt} target="_blank" rel="noreferrer">
+        {children}
+      </a>
+    ),
   };
 
   return (

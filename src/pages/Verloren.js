@@ -53,6 +53,11 @@ const Verloren = () => {
   }, []);
 
   const renderers = {
+    a: ({ href, alt, children }) => (
+      <a href={href} alt={alt} target="_blank" rel="noreferrer">
+        {children}
+      </a>
+    ),
     table: ({ children }) => <table className="tab-table">{children}</table>,
     thead: ({ children }) => <thead className="tab-thead">{children}</thead>,
     tbody: ({ children }) => <tbody className="tab-tbody">{children}</tbody>,
@@ -64,7 +69,9 @@ const Verloren = () => {
   return (
     <div>
       <div className="main-container">
-        <Markdown remarkPlugins={[remarkGfm]}>{main}</Markdown>
+        <Markdown remarkPlugins={[remarkGfm]} components={renderers}>
+          {main}
+        </Markdown>
       </div>
       <div className="tab-container" ref={tabContentRef}>
         <div className="tab-button-container">

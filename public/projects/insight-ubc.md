@@ -5,15 +5,12 @@
 
 ## Overview
 
-Web development project for CPSC 310 at University of British Columbia
+Collaborated with a team to define user stories and gather requirements, leading to the creation of a custom query language for a snapshot of the UBC Pair database.
 
-[Watch the Video](https://youtu.be/nV4fzq2wbE4)  
-_This video was made by my partner._
+[Watch the Video For Demo](https://youtu.be/nV4fzq2wbE4) (_This video was made by my partner._)
 
 ## Features
 
-- Developed a query language using EBNF for a snapshot of the UBC Pair database.
-- Wrote **user stories** and built a **REST-API server** that communicated with a self-implemented backend.
-- Implemented the backend using the **Facade pattern** with ts-node.
-- Practiced **version control**, **code review**, **scrum meetings**, and **Test-Driven Development (TDD)** in **TypeScript (TS)**.
-- Developed 50+ unit and integration tests using **mocha** and **chai** packages for asynchronous black-box and glass-box testing.
+- Performed an extensive series of over 50 unit and integration tests using **Mocha** and **Chai** frameworks, meticulously evaluating the backend query processing in accordance with EBNF standards. Utilized **Postman** to validate HTTP requests and monitor varied input behaviors, ensuring comprehensive testing and reliable results.
+- Leveraged **GitHub** for version control in a collaborative team setting, actively participating in code reviews and **Agile scrum meetings** to enhance project efficiency and communication. Implemented **Test-Driven Development (TDD)** practices with TypeScript, significantly improving code quality and robustness.
+- Developed frontend functionality that dynamically filtered search results based on user input. This included support for wildcard searches and aggregate queries, enhancing the user experience and the system's functionality.

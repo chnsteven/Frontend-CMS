@@ -288,7 +288,10 @@ function QueryEngine() {
                     key={`th-icon-${field}-${index}`}
                     onClick={() => handleVisibility(field)}
                   >
-                    <FontAwesomeIcon icon={getVisibilityIcon(field)} />
+                    <FontAwesomeIcon
+                      className="toggle-button"
+                      icon={getVisibilityIcon(field)}
+                    />
                   </th>
                 ))}
               </tr>

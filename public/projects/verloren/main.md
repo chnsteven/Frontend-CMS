@@ -3,20 +3,13 @@
 **Start Date:** January 2022  
 **End Date:** April 2022
 
-[Watch Video For Game Demo](https://youtu.be/ouTDd7njgWA)
-
 ## Overview
 
-In a team of 6, we completed a 10-minute adventure game in 3 months, written in C++.
+Employed Entity-Component-System (ECS) architecture in C++ to build a top-down adventure game.
 
-Our implementation follows the Entity Component System (ECS) architectural pattern.
-
-Most implementations are written by ourselves, except for visual assets like JSON map generator, enemy sprite sheets and etc.
+[Watch Video For Demo](https://youtu.be/ouTDd7njgWA)
 
 ## Features
 
-- Implemented **text** and **shadow rendering** using OpenGL.
-- Developed a **Physics system** and a **particle system**.
-- Documented progress and conducted **code reviews** on a weekly basis.
-- Designed **character assets** using drawing tools.
-- Implemented enemy logic with **A\* search algorithm** and **behavior trees**.
+- Directed the design and execution of enemy logic leveraging the A\* search algorithm and behavior trees, demonstrating proficiency in advanced algorithms and AI concepts.
+- Managed the rendering of game scenes using OpenGL, highlighting proficiency in graphics programming and visual aesthetics.

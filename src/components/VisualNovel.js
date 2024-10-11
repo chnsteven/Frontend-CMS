@@ -17,7 +17,7 @@ const VisualNovel = () => {
   const currentSlide = slides
     ? slides.find((slide) => slide.id === currentSlideId)
     : {
-        text: "Please create a profile to start the story.",
+        text: "Please click on the NEW button to create a profile to start the story.",
         choices: [],
       };
 
