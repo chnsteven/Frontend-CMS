@@ -1,16 +1,19 @@
-- Programming languages:
+### **Programming Languages:**
 
-  - My first programming language was **Java**. I learned the basics of Object Oriented Programming, design principles and patterns with **Java**. I created the **Java Application** project listed under the Projects above.
-  - After that, I built solid foundation in computer hardwares and algorithm designs. I digged into low-level programming with machine code, assembly language, **C** and **C++**.
-  - ML (Machine learning) and Statistics are also part of my undergraduate study. Here, **Python** and **R** are the 2 languages that I used to write ML algorithms and make Statistical inferences and visualizations.
-  - Near the end of my study, I touched on software development, where I created a Full-stack project with a partner. I learned how to program in **Typescript** as I developed the project. Previously I had minimal knowledge about **Javascript**.
-  - I touched on video game programming as well. In school, I followed the **Entity Component System (ECS)** Architecture to build a C++ game in a team. Outside of school, I made two personal games, where the first one was familiarizing myself with the Unity game engine and the second one was a game created in Godot 4 for the Global Game Jam 2024.
+- My first programming language was **Java**, where I learned the basics of Object-Oriented Programming, design principles, and patterns. I created the **Java Application** project listed above under Projects.
+- After that, I built a solid foundation in computer hardware and algorithm design, diving into low-level programming with machine code, assembly language, **C**, and **C++**.
+- During my undergraduate studies, I also explored **Machine Learning (ML)** and Statistics. I used **Python** and **R** to write ML algorithms and perform statistical analysis and visualizations.
+- Toward the end of my studies, I ventured into software development by working on a Full-stack project with a partner. This is where I learned **Typescript**, having previously had only basic knowledge of **JavaScript**.
+- I also dabbled in video game programming. At school, I followed the **Entity Component System (ECS)** architecture to build a **C++** game with a team. Outside of school, I created two personal games—one in **Unity** and another in **Godot 4** for the Global Game Jam 2024.
 
-- Miscellaneous:
+### **Miscellaneous:**
 
-  - I built foundation in Computer Graphics and Animations. I understand splines, interpolations and other principles and used **Three.js** to model animations. _/about/a2%20demo.mp4_
-  - After graduation, I made several full-stack projects using **Node.js**. I looked into popular modern Frontend libraries like **Next.js** and **React.js**.
-  - In addition to **Node.js**, I was interested in other backend technologies, so I began learning about PHP, SQL, and built a **Content Management System (CMS)**.
-  - I experimented with different kinds of relational databases including **SQlite**, **MySQL**.
-  - For all the projects, I used **git** for version control.
-  - I am used to participating in an **Agile** work environment. Slack was my communication application in a team setting.
+- I gained a foundation in **Computer Graphics and Animation**, understanding splines, interpolations, and other principles. I used **Three.js** to model animations.
+
+_/about/a2%20demo.mp4_
+
+- After graduating, I built several full-stack projects using **Node.js** and explored popular frontend libraries like **Next.js** and **React.js**.
+- Beyond **Node.js**, I became interested in other backend technologies, learning **PHP** and **SQL** to build a **Content Management System (CMS)**.
+- I experimented with various relational databases, including **SQLite** and **MySQL**.
+- For all my projects, I used **Git** for version control.
+- I'm familiar with working in an **Agile** environment, and I've used **Slack** for team communication.

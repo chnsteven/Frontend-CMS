@@ -148,11 +148,18 @@ function MessageBoard() {
     <div className="main-container">
       <div>
         <h2 className="error-message">
-          Unfortunately, I realized there isn't a good way to host a free
-          database service. Nevertheless, I successfully created the message
-          board and its interactivities. If you like, you could the my server
-          side repository from GitHub to try out!
+          Unfortunately, I realized there's no good way to host a free database
+          service. However, I successfully built the message board with all its
+          interactive features. If you're interested, feel free to check out my
+          server-side repository on GitHub to give it a try!
         </h2>
+        <a
+          href="https://github.com/chnsteven/PHP-CMS"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Github Link
+        </a>
       </div>
       <div>
         <h2>New Comment</h2>

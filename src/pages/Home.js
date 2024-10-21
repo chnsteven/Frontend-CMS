@@ -35,11 +35,7 @@ function Home() {
 
   return (
     <div className="main-container">
-      <Markdown
-        className="education-style"
-        remarkPlugins={[remarkGfm]}
-        components={components}
-      >
+      <Markdown remarkPlugins={[remarkGfm]} components={components}>
         {main}
       </Markdown>
     </div>

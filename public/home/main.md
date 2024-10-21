@@ -1,11 +1,11 @@
 ![Steven Chen Photo](/home/photo.jpg)
 
-# Welcome to My Porfolio !!!
+# Welcome to My Portfolio!
 
-## This is a static page that I created to showcase my skills and knowledges.
+## This is a static page I built to showcase my skills and knowledge.
 
-## Starting with my first **CS (Computer Science)** project during my undergraduate study, I gathered almost all projects I have accomplished.
+## Starting with my very first **Computer Science** project from my undergraduate studies, I've gathered almost all the projects I've completed.
 
-## I integrated **Response Web Design** when I developed this project. Please try it on different devices, screen sizes to experiment!
+## I implemented **Responsive Web Design** in this portfolio, so feel free to try it out on different devices and screen sizes!
 
-## I hope this project can help you learn more about my capabilities. Thank you!
+## I hope this gives you a better understanding of my capabilities. Thanks for visiting!
